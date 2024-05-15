@@ -1,0 +1,358 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.fixsidemenu{
+    margin-left: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.categoriastitle{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.titlequemsomos{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+    padding-top: 3%;
+    margin: auto;
+    text-align: center;
+}
+
+.marcatitle{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    opacity: 100%;
+}
+
+.divtextquemsomos{
+    padding-top: 5%;
+    justify-content: center;
+    margin: auto;
+    font-size: 30px;
+    text-align: ce;
+    width: 80%;
+}
+
+.navbar1 {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 90px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: black;
+}
+
+.loginico{
+    padding: 10px;
+}
+
+.search-bar {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.search-input {
+    color: black;
+    display: flex;
+    border: 1px solid black;
+    position: relative;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-right: 20px;
+    height: 26pt;
+    width: 370pt;
+}
+
+.menulateralsearchmarca{
+    margin-top: 6%;
+}
+
+.aplicarbuttonmenul{
+    margin-top: 6%;
+}
+
+.mapasite{
+    font-size: 24px;
+    margin-top: 2%;
+    margin-left: 4.2%;
+}
+
+.inputfiltropreco{
+    width: 60px;
+}
+
+.itenscat{
+    opacity: 80%;
+    margin-top: 6%;
+    margin-bottom: 10%;
+}
+
+.precomenul{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    opacity: 100%;
+    margin-bottom: 6%;
+}
+
+.menulateral {
+    position: absolute;
+    margin-top: 22.5%;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.menulateral h2 {
+    margin-top: 0;
+}
+
+.menulateral ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.menulateral ul li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.menulateral input[type="search"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.menulateral input[type="range"] {
+    width: calc(100% - 50px);
+    margin-bottom: 5px;
+}
+
+.menulateral button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menulateral button:hover {
+    background-color: #0056b3;
+}
+
+
+.wherelocal{
+    padding-top: 6px;
+}
+
+.search-input input {
+    width: 90%;
+    border: none;
+    outline: none;
+    margin-right: 5px;
+}
+
+.titlecategoria{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding-top: 35pt;
+    margin-left: 4.2%;
+
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.search-bar img {
+    width: 20px;
+    height: auto;
+    text-align: right;
+    align-items: right;
+    justify-content: right;
+}
+
+.user-actions {
+    color: black;
+    text-align: left;
+    justify-content: left;
+    gap: 10px;
+}
+
+.strongazul{
+    color: blue;
+}
+
+.action {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.pesquisanav1 {
+    font-size: 18px;
+    width: 300px;
+    height: 30px;
+}
+
+
+.textmenunav2{
+    text-decoration: none;
+    font-style: none;
+    text-decoration: none;
+    align-items: center;
+    text-align: center;
+    padding-left: 100px;
+}
+
+.textmenunav2:hover{
+    color: #333;
+    transition: 0.2s;
+}
+
+.containerlinha1{
+    margin-top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+}
+
+.containerlinha1 .framelinha1 {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.conteinerpudutos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.framelinha1 {
+    align-items: center;
+    text-align: center;
+    display: inline-block;
+    width: 250px;
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 5px;
+}
+
+.comprabuton {
+    margin: auto;
+    text-align: center;
+    font-size: 14px;
+    align-items: center;
+    display: inline-block;
+    justify-content: center;
+    background-color: black; 
+    color: white;
+    height: 20px;
+    width: 170px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    margin-top: 10px; 
+}
+
+
+.comprabuton:hover {
+    background-color: #333; 
+}
+
+.fotocompra {
+    vertical-align: middle; 
+    margin-left: 5px;
+}
+
+.textproducts{
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 235px;
+    padding-top: 6%;
+    padding-bottom: 3%;
+}
+
+.produtoimg{
+    padding-top: 13px;
+}
+
+.navbar2 {
+    margin: auto;
+    background-color: black;
+    height: 70pt;
+    vertical-align: middle;
+    color: white;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.menunav2 {
+    text-decoration: none;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer{
+    margin-top: 140px;
+    height: 400px;
+    width: 100%;
+    background-color: black;
+}

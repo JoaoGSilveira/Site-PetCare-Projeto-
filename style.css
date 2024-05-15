@@ -15,6 +15,10 @@
     box-sizing: border-box;
 }
 
+.bodylogin{
+    background-color: rgba(207, 207, 207, 1);
+}
+
 .categoriastitle{
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -31,11 +35,70 @@
     text-align: center;
 }
 
+.text1servico{
+    margin: auto;
+    text-align: center;
+    padding-top: 2%;
+    margin-right: 5%;
+    margin-top: 9%;
+    font-size: 23px;
+    width: 40%;
+}
+
+.bodyservico{
+    height: 1000px;
+}
+
+.text2servico{
+    margin: auto;
+    margin-top: 20%;
+    width: 40%;
+    font-size: 23px;
+    margin-left: 4%;
+}
+
+.tosaimg{
+    margin: auto;
+    margin-top: 12%;
+    height: auto;
+    width: 550px;
+    border-radius: 10px;
+    margin-left: 7%;
+    position: absolute;
+}
+
+.titletext2{
+    padding-bottom: 2%;
+}
+
 .marcatitle{
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-style: normal;
     opacity: 100%;
+}
+
+.textservicobanho{
+    padding-top: 15px;
+}
+
+.fotobanho{
+    margin: auto;
+    margin-top: 10%;
+    margin-left: 3%;
+    position: absolute;
+}
+
+.containerservicos{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 23px;
+    width: 96%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
 }
 
 .divtextquemsomos{
@@ -49,6 +112,7 @@
 
 .navbar1 {
     color: #fff;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -113,6 +177,115 @@
 
 .inputfiltropreco{
     width: 60px;
+}
+
+.containerlogin{
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 3%;
+    margin-left: 20%;
+    height: 330px;
+    width: 350px;
+    background-color: white;
+}
+
+.titlecriarconta{
+    position: absolute;
+    color: blue;
+    margin: auto;
+    width: 600px;
+    margin-left: 28%;
+    margin-top: 15px;
+}
+
+.textcriarconta{
+    position: absolute;
+    margin: auto;
+    font-size: 25px;
+    width: 600px;
+    margin-left: 28%;
+    margin-top: 7%;
+}
+
+.textlogin{
+    margin: auto;
+    padding-left: 19px;
+    padding-top: 20px;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+}
+
+.titlelogin{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    margin: auto;
+    padding-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 7.5%;
+}
+
+.buttonentrar{
+    margin: auto;
+    width: 60%;
+    height: 40px;
+    margin-top: 11%;
+    margin-right: 23%;
+    background-color: blue;
+    border-radius: 10px;
+    color: white;
+}
+
+.textentrar{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    padding-top: 3%;
+}
+
+.criarcontabutton{
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-top: 16%;
+    margin-left: 28%;
+    position: absolute;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    height: 7%;
+    width: 38%;
+}
+
+.textcriarcontabutton{
+    margin: auto;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 1.9%;
+    align-items: center;
+}
+
+.editlogintext{
+    padding-bottom: 8px;
+    padding-top: 10px;
+}
+
+.persinput{
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding-left: 8px;
+    border: 0.5px;
+    height: 33px;
+    border-style: solid;
+    border-radius: 4px;
 }
 
 .itenscat{

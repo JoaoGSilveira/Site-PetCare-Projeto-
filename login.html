@@ -56,7 +56,7 @@
     <main>
         <div class="mapasite">
             <p>Onde estou?</p>
-            <p class="wherelocal">inicio</p>
+            <p class="wherelocal"><a href="index.html">inicio</a> > Login</p>
         </div>
 
         <div class="containerlogin">
@@ -65,18 +65,23 @@
                 <p class="textcriarconta">Com a sua conta da PetCare você tem acesso a ofertas , descontos, acompanhar
                     os seus pedidos e muito mais!
                 </p>
-                <div class="criarcontabutton">
+                <a href="cadastro.html"><div class="criarcontabutton">
                     <p class="textcriarcontabutton">Criar minha conta!</p>
-                </div> 
+                </div></a>
             </div>
             <div class="textlogin">
                 <h1 class="titlelogin">Acessar sua conta</h1>
-                <h2 class="editlogintext">Login</h2>
-                <input type="text" placeholder="Digite seu E-mail ou CPF/CNPJ" class="persinput">
-                <h2 class="editlogintext">Senha</h2>
-                <input type="password" placeholder="Digite sua senha aqui" class="persinput">
-                <div class="buttonentrar">
-                    <h2 class="textentrar">Entrar</h2>
+                <form action="/sendlogin" method="get">
+                    <div>
+                        <label class="logintext">Login</label>
+                        <input type="text" id="login" class="login" placeholder="Digite seu E-mail ou CPF/CNPJ">
+                      </div>
+                      <div>
+                        <label class="senhalogintext">Senha</label>
+                        <input type="password" id="senhalogin" class="senhalogin" placeholder="Digite sua senha aqui">
+                        <button class="botaologin">Entrar</button>
+                      </div>
+                </form>
                 </div>
             </div>
         </div>

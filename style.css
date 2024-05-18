@@ -249,6 +249,60 @@
     padding-top: 3%;
 }
 
+.login{
+    margin-top: 6px;
+    padding-left: 5px;
+    display: flex;
+    border-radius: 3px;
+    width: 300px;
+    height: 37px;
+    font-size: 16px;
+}
+
+.logintext{
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.senhalogin{
+    margin-top: 6px;
+    padding-left: 5px;
+    display: flex;
+    border-radius: 3px;
+    width: 302px;
+    height: 37px;
+    font-size: 16px;
+}
+
+.senhalogintext{
+    display: flex;
+    margin-top: 10px;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.botaologin{
+    margin-top: 40px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    border-radius: 10px;
+    border-style: none;
+    border-width: 1px;
+    background-color: blue;
+    color: white;
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    width: 310px;
+    display: flex;
+}
+
 .criarcontabutton{
     margin: auto;
     align-items: center;
@@ -262,6 +316,64 @@
     border-width: 2px;
     height: 7%;
     width: 38%;
+}
+
+.criarcontabutton:hover{
+    transition: 0.5s;
+    background-color: blue;
+    color: white;
+    border-style: none;
+    border: none;
+}
+
+.containercadastro{
+    margin: auto;
+    display: flex;
+    height: 630px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 30%;
+}
+
+.subtitlecadastro{
+    display: flex;
+    margin-top: 10px;
+}
+
+.botaocadastro{
+    margin-top: 40px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    border-radius: 10px;
+    border-style: none;
+    border-width: 1px;
+    background-color: blue;
+    color: white;
+    font-size: 25px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    width: 310px;
+}
+
+.inputcadastro{
+    padding-left: 3px;
+    margin: auto;
+    margin-top: 5px;
+    width: 400px;
+    height: 30px;
+}
+
+.titlecadastro{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    margin: auto;
 }
 
 .textcriarcontabutton{
@@ -304,7 +416,7 @@
 
 .menulateral {
     position: absolute;
-    margin-top: 22.5%;
+    margin-top: 23.5%;
     top: 0;
     left: 0;
     width: 250px;
@@ -312,6 +424,10 @@
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
+}
+
+.wherelocal2{
+    margin-left: 0.5%;
 }
 
 .menulateral h2 {
@@ -368,9 +484,18 @@
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-style: normal;
-    padding-top: 35pt;
+    padding-top: 5%;
     margin-left: 4.2%;
+    margin-bottom: -1%;
+}
 
+.titlecategoria2{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 4.7%;
 }
 
 .search-icon {

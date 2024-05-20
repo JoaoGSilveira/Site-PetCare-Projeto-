@@ -155,6 +155,27 @@
     <footer class="footer">
 
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchBar = document.querySelector('.pesquisanav1');
+            const produtos = document.querySelectorAll('.framelinha1');
+
+            searchBar.addEventListener('input', function() {
+                const searchTerm = searchBar.value.trim().toLowerCase();
+
+                produtos.forEach(function(produto) {
+                    const nomeProduto = produto.querySelector('.textproducts').textContent.toLowerCase();
+                    
+                    if (nomeProduto.includes(searchTerm)) {
+                        produto.style.display = 'inline';
+                    } else {
+                        produto.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
     
 </body>
 </html>

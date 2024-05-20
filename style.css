@@ -553,6 +553,7 @@
 .containerlinha1{
     margin-top: 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     margin: 50px;
@@ -565,7 +566,7 @@
 
 .conteinerpudutos{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin: 50px;
     margin-top: 0;
@@ -580,6 +581,7 @@
     height: 400px;
     border: 1px solid black;
     border-radius: 10px;
+    box-sizing: border-box;
     padding: 8px;
     margin: 5px;
 }

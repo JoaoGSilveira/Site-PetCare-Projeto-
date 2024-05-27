@@ -19,8 +19,8 @@
 
     <div class="containeradmin">
         <h1 class="titleadmin">Acessar</h1>
-        <button class="buttonProduto">Produtos</button>
-        <button class="buttonCliente">Clientes</button>
+        <a href="tabelaproduto.php"><button class="buttonProduto">Produtos</button></a>
+        <a href="tabelacliente.php"><button class="buttonCliente" href = "tabelacliente.php">Clientes</button></a>
     </div>
 </body>
 </html>

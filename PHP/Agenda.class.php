@@ -45,7 +45,7 @@ class Agencia
 
     public function setServico_realiaado($servico_realiazado)
     {
-        $this->servico_realiaado[] = $servico_realiazado;
+        $this->servico_realizado[] = $servico_realiazado;
     }
 
 

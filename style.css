@@ -125,16 +125,14 @@
 }
 
 .containeradmin{
-    position: relative;
     margin: auto;
-    margin-top: 145px;
     border-radius: 15px;
     text-align: center;
     background-color: gray;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    height: 300px;
+    width: 100%;
+    height: 100%;
 }
 
 .buttonProduto{
@@ -371,7 +369,7 @@
 .containercadastro{
     margin: auto;
     display: flex;
-    height: 630px;
+    height: 940px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -416,6 +414,7 @@
     font-weight: 700;
     font-style: normal;
     margin: auto;
+    margin-bottom: 24px;
 }
 
 .textcriarcontabutton{

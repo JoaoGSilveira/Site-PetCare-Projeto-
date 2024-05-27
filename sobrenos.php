@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt_BR">
+<!DOCTYPE php>
+<php lang="pt_BR">
 
 <head>
     <meta charset="UTF-8">
@@ -27,28 +27,28 @@
             <a href="#"><img src="icon/compras.png" height=30px class="loginico"></a>
         </div>
         <div>
-            <a href="login.html"><img src="icon/login.png" height=30px class="loginico"></a>
+            <a href="login.php"><img src="icon/login.png" height=30px class="loginico"></a>
         </div>
         <div class="user-actions">
-            <a href="login.html"><span class="strongazul">Entrar</span> ou<br><span
+            <a href="login.php"><span class="strongazul">Entrar</span> ou<br><span
                     class="strongazul">Cadastrar-se</span></a>
         </div>
     </nav>
     <nav class="navbar2">
         <ul class="menunav2">
-            <a href="index.html">
+            <a href="index.php">
                 <li class="textmenunav2">inicio</li>
             </a>
-            <a href="sobrenos.html">
+            <a href="sobrenos.php">
                 <li class="textmenunav2">Sobre Nós</li>
             </a>
-            <a href="produtogatos.html">
+            <a href="produtogatos.php">
                 <li class="textmenunav2">Produtos para Gatos</li>
             </a>
-            <a href="produtocaes.html">
+            <a href="produtocaes.php">
                 <li class="textmenunav2">Produtos para Cães</li>
             </a>
-            <a href="servicos.html">
+            <a href="servicos.php">
                 <li class="textmenunav2">Serviços</li>
             </a>
         </ul>
@@ -56,7 +56,7 @@
     <main>
         <div class="mapasite">
             <p>Onde estou?</p>
-            <p class="wherelocal"><a href="index.html">inicio</a> > Sobre Nós</p>
+            <p class="wherelocal"><a href="index.php">inicio</a> > Sobre Nós</p>
         </div>
         <h1 class="titlequemsomos">Sobre Nós</h1>
         </div>
@@ -80,4 +80,4 @@
 
 </body>
 
-</html>
+</php>

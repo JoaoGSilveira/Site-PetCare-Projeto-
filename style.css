@@ -366,16 +366,51 @@
     border: none;
 }
 
-.containercadastro{
+.containercadastro {
     margin: auto;
     display: flex;
-    height: 940px;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: white;
     border-radius: 10px;
     width: 30%;
+    padding: 30px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .subtitlecadastro{

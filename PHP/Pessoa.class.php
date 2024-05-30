@@ -4,7 +4,7 @@
 		public function __construct(protected string $nome = "", 
         protected string $cpf = "",
         protected string $telefone = "",
-        protected string $endereco = ""){}
+        protected string $logradouro = ""){}
         
 		/* get */ 
 
@@ -22,9 +22,9 @@
 			return $this->telefone;
 		}
 
-        public function getEndereco()
+        public function getLogradouro()
 		{
-			return $this->endereco;
+			return $this->logradouro;
 		}
 
         /* set */
@@ -42,9 +42,9 @@
 			$this->telefone = $telefone;
 		}
 
-        public function setEndereco($endereco)
+        public function setLogradouro($logradouro)
 		{
-			$this->endereco = $endereco;
+			$this->logradouro = $logradouro;
 		}
 	}
 ?>

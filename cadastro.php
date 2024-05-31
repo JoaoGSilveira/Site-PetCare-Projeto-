@@ -35,6 +35,11 @@ if($_POST){
         $erro = true;
     }
 
+    if(strcmp($_POST['senha'], $_POST['confirmarsenha']) != 0){
+        $msg[5] = "As senhas não correspondem!";
+        $erro = true;
+    }
+
     if(empty($_POST['confirmarsenha'])){
         $msg[5] = "* Campo obrigatório!";
         $erro = true;
@@ -110,29 +115,25 @@ if($_POST){
     <title>PetCare | Cadastrar-se</title>
 
     <script>
-function formatarCelular(celular) {
-    // Limpar qualquer formatação anterior
-    celular = celular.replace(/[^\d]/g, '');
-    // Adicionar parênteses e traço
-    return '(' + celular.substring(0, 2) + ')' + celular.substring(2, 6) + '-' + celular.substring(6);
-}
+        function formatarCelular(celular) {
+            celular = celular.replace(/[^\d]/g, '');
+            return '(' + celular.substring(0, 2) + ')' + celular.substring(2, 7) + '-' + celular.substring(7);
+        }
 
-function formatarCPF(cpf) {
-    // Limpar qualquer formatação anterior
-    cpf = cpf.replace(/[^\d]/g, '');
-    // Adicionar pontos e traço
-    return cpf.substring(0, 3) + '.' + cpf.substring(3, 6) + '.' + cpf.substring(6, 9) + '-' + cpf.substring(9);
-}
+        function formatarCPF(cpf) {
+            cpf = cpf.replace(/[^\d]/g, '');
+            return cpf.substring(0, 3) + '.' + cpf.substring(3, 6) + '.' + cpf.substring(6, 9) + '-' + cpf.substring(9);
+        }
 
-// Função para aplicar a formatação quando o usuário sai dos campos
-function aplicarFormatacao() {
-    var celular = document.getElementById('celular').value;
-    var cpf = document.getElementById('cpf').value;
-    
-    document.getElementById('celular').value = formatarCelular(celular);
-    document.getElementById('cpf').value = formatarCPF(cpf);
-}
-</script>
+        function aplicarFormatacao() {
+            var celular = document.getElementById('celular').value;
+            var cpf = document.getElementById('cpf').value;
+            
+            document.getElementById('celular').value = formatarCelular(celular);
+            document.getElementById('cpf').value = formatarCPF(cpf);
+        }
+    </script>
+
 
 </head>
 
@@ -186,15 +187,6 @@ function aplicarFormatacao() {
             <p>Onde estou?</p>
             <p class="wherelocal"><a href="index.php">inicio</a> > <a href="login.php">Login</a> > Cadastro</p>
         </div>
-
-        <div id="popup" class="popup">
-            <div class="popup-content">
-                <span class="close" onclick="closePopup()">&times;</span>
-                <p>Cadastro realizado com sucesso!</p>
-            </div>
-        </div>
-
-
         <div class="containercadastro">
             <div>
                 <h1 class="titlecadastro">Criar sua conta</h1>
@@ -219,7 +211,7 @@ function aplicarFormatacao() {
 
                     <div>
                         <label class="subtitlecadastro" for="cpf">CPF*</label>
-                        <input type="text" id="cpf" name="cpf" onblur="aplicarFormatacao()" class="inputcadastro" placeholder="Digite seu CPF/CNPJ" value="<?php echo isset($_POST['cpf'])?$_POST['cpf']:''?>">
+                        <input type="text" id="cpf" name="cpf" onblur="aplicarFormatacao()" maxlength= "11" class="inputcadastro" placeholder="Digite seu CPF/CNPJ" value="<?php echo isset($_POST['cpf'])?$_POST['cpf']:''?>">
                         <div style="color:red; text-align: left;"><?php echo $msg[3] != ""?$msg[3]:'';?></div>
                     </div>
 

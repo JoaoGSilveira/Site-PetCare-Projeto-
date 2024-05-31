@@ -8,7 +8,6 @@
     font-style: normal;
 }
 
-
 .fixsidemenu{
     margin-left: 250px;
     padding: 20px;
@@ -343,6 +342,13 @@
     display: flex;
 }
 
+.botaologin:hover{
+        transition: 0.2s;
+        background-color:navy;
+        color: white;
+        cursor: pointer;
+}
+
 .criarcontabutton{
     margin: auto;
     align-items: center;
@@ -418,7 +424,7 @@
     margin-top: 10px;
 }
 
-.botaocadastro{
+.botaocadastro {
     margin-top: 40px;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -435,6 +441,14 @@
     height: 50px;
     width: 310px;
 }
+
+.botaocadastro:hover {
+    transition: 0.2s;
+    background-color:navy;
+    color: white;
+    cursor: pointer;
+}
+
 
 .inputcadastro{
     padding-left: 3px;
@@ -596,6 +610,11 @@
     gap: 10px;
 }
 
+.user-actions a:hover{
+    color: navy;
+    text-decoration: underline;
+}
+
 .strongazul{
     color: blue;
 }
@@ -704,6 +723,7 @@
 }
 
 .navbar2 {
+    width: 100%;
     margin: auto;
     background-color: black;
     height: 70pt;

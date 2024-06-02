@@ -1,3 +1,46 @@
+<?php
+
+$msgerro = array("","");
+$erro = false;
+
+if($_POST){
+    if(empty($_POST['login'])){
+        $msgerro[0] = "* Campo Obrigatório!";
+        $erro = true;
+    }
+    if(empty($_POST['senhalogin'])){
+        $msgerro[1] = "* Campo Obrigatório!";
+        $erro = true;
+    }
+
+    if(!$erro){
+        require_once "PHP/Conexao.class.php";
+        require_once "PHP/Pessoa.class.php";
+        require_once "PHP/cliente.class.php";
+        require_once "PHP/ClienteDAO.php";
+    
+        $cliente = new Cliente(email:$_POST["login"], senha:md5($_POST["senhalogin"]));
+    
+        $clienteDAO = new ClienteDAO();
+        
+        $verificarLogin = $clienteDAO->verificar_login($cliente);
+    
+        if(count($verificarLogin) > 0) {
+            if(!isset($_SESSION)) {
+                session_start();
+            }
+            $_SESSION["nome"] = $verificarLogin[0]->nome;
+            $_SESSION["id_cliente"] = $verificarLogin[0]->id_cliente;
+            $_SESSION["tipo"] = $verificarLogin[0]->tipo;
+            header("location:index.php");
+        } else {
+            $mensagem = "Verifique o e-mail/senha";
+        }
+    }
+}
+
+?>
+
 <!DOCTYPE php>
 <php lang="pt_BR">
 
@@ -71,15 +114,18 @@
             </div>
             <div class="textlogin">
                 <h1 class="titlelogin">Acessar sua conta</h1>
-                <form action="/sendlogin" method="get">
+                <form action="#" method="POST">
                     <div>
                         <label class="logintext">Login</label>
-                        <input type="text" id="login" class="login" placeholder="Digite seu E-mail ou CPF/CNPJ">
+                        <input type="email" id="login" name="login" class="login" value="<?php echo isset($_POST['login'])?$_POST['login']:''?>" placeholder="Digite seu E-mail ou CPF">
+                        <div style="color:red; text-align: left;"><?php echo $msgerro[0] != ""?$msgerro[0]:'';?></div>
                       </div>
                       <div>
                         <label class="senhalogintext">Senha</label>
-                        <input type="password" id="senhalogin" class="senhalogin" placeholder="Digite sua senha aqui">
-                        <button class="botaologin">Entrar</button>
+                        <input type="password" id="senhalogin" name="senhalogin" class="senhalogin" placeholder="Digite sua senha aqui">
+                        <div style="color:red; text-align: left;"><?php echo $msgerro[1] != ""?$msgerro[1]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo isset($mensagem) ? $mensagem : ''; ?></div>
+                        <button type="submit" class="botaologin">Entrar</button>
                       </div>
                 </form>
                 </div>

@@ -23,6 +23,18 @@ public function inserir($cliente){
     $this->dba = null;
 }
 
+public function verificar_login($cliente)
+		{
+			$sql = "SELECT id_cliente, nome, tipo FROM usuario WHERE email = ? AND senha = ?";
+			
+			$stm = $this->dba->prepare($sql);
+			$stm->bindValue(1, $cliente->getEmail());
+			$stm->bindValue(2, $cliente->getSenha());
+			$stm->execute();
+			$this->dba = null;
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+
 public function buscar_todos(){
 	$sql = "SELECT * FROM usuario";
 	$stm = $this->dba->prepare($sql);

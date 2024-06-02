@@ -25,8 +25,18 @@ if($_POST){
         $erro = true;
     }
 
+    if(strlen($_POST['celular']) < 11){
+        $msg[2] = "Esse número de celular não é valido!";
+        $erro = true;
+    }
+
     if(empty($_POST['cpf'])){
         $msg[3] = "* Campo obrigatório!";
+        $erro = true;
+    }
+
+    if(strlen($_POST['cpf']) < 11){
+        $msg[3] = "Esse CPF não é valido!";
         $erro = true;
     }
 
@@ -115,24 +125,36 @@ if($_POST){
     <title>PetCare | Cadastrar-se</title>
 
     <script>
-        function formatarCelular(celular) {
-            celular = celular.replace(/[^\d]/g, '');
+    function formatarCelular(celular) {
+        celular = celular.replace(/[^\d]/g, '');
+        if (celular.length === 11) {
             return '(' + celular.substring(0, 2) + ')' + celular.substring(2, 7) + '-' + celular.substring(7);
+        } else {
+            return celular;
         }
+    }
 
-        function formatarCPF(cpf) {
-            cpf = cpf.replace(/[^\d]/g, '');
+    function formatarCPF(cpf) {
+        cpf = cpf.replace(/[^\d]/g, '');
+        if (cpf.length === 11) {
             return cpf.substring(0, 3) + '.' + cpf.substring(3, 6) + '.' + cpf.substring(6, 9) + '-' + cpf.substring(9);
+        } else {
+            return cpf;
         }
+    }
 
-        function aplicarFormatacao() {
-            var celular = document.getElementById('celular').value;
-            var cpf = document.getElementById('cpf').value;
-            
+    function aplicarFormatacao() {
+        var celular = document.getElementById('celular').value;
+        var cpf = document.getElementById('cpf').value;
+
+        if (celular.trim() !== '') {
             document.getElementById('celular').value = formatarCelular(celular);
+        }
+        if (cpf.trim() !== '') {
             document.getElementById('cpf').value = formatarCPF(cpf);
         }
-    </script>
+    }
+</script>
 
 
 </head>
@@ -205,7 +227,7 @@ if($_POST){
                     
                     <div>
                         <label class="subtitlecadastro" for="celular">Celular*</label>
-                        <input type="tel" id="celular" name="celular" onblur="aplicarFormatacao()" maxlength="14" class="inputcadastro" placeholder="Digite seu celular" value="<?php echo isset($_POST['celular'])?$_POST['celular']:''?>">
+                        <input type="tel" id="celular" name="celular" onblur="aplicarFormatacao()" maxlength="11" class="inputcadastro" placeholder="Digite seu celular" value="<?php echo isset($_POST['celular'])?$_POST['celular']:''?>">
                         <div style="color:red; text-align: left;"><?php echo $msg[2] != ""?$msg[2]:'';?></div>
                     </div>
 

@@ -219,12 +219,15 @@
 }
 
 .containerlogin{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     border-radius: 10px;
     margin: auto;
     margin-top: 3%;
     margin-left: 20%;
-    height: 330px;
-    width: 350px;
+    padding: 20px;
+    width: 23%;
     background-color: white;
 }
 
@@ -293,7 +296,7 @@
     padding-left: 5px;
     display: flex;
     border-radius: 3px;
-    width: 300px;
+    width: 308px;
     height: 37px;
     font-size: 16px;
 }
@@ -310,7 +313,7 @@
     padding-left: 5px;
     display: flex;
     border-radius: 3px;
-    width: 302px;
+    width: 308px;
     height: 37px;
     font-size: 16px;
 }

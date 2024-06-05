@@ -611,6 +611,8 @@
     text-align: left;
     justify-content: left;
     gap: 10px;
+    text-overflow: ellipsis; /* Adiciona "..." ao final do texto que foi cortado */
+    max-width: 150px; /* Largura máxima para o contêiner do nome */
 }
 
 .user-actions a:hover{
@@ -633,6 +635,40 @@
     height: 30px;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* Cor de fundo */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
+    z-index: 1;
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+.dropdown-content a {
+    color: #333; /* Cor dos links */
+    padding: 10px 15px; /* Espaçamento interno */
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+.dropdown-content a:hover {
+    background-color: #f2f2f2; /* Cor de fundo ao passar o mouse */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
 .textmenunav2{
     text-decoration: none;

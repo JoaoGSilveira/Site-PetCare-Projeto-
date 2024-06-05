@@ -1,5 +1,4 @@
 <?php
-
 require_once "PHP/Conexao.class.php";
 require_once "PHP/Pessoa.class.php";
 require_once "PHP/cliente.class.php";

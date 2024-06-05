@@ -346,10 +346,10 @@
 }
 
 .botaologin:hover{
-        transition: 0.2s;
-        background-color:navy;
-        color: white;
-        cursor: pointer;
+    transition: 0.2s;
+    background-color:navy;
+    color: white;
+    cursor: pointer;
 }
 
 .criarcontabutton{
@@ -702,6 +702,53 @@
     display: block;
 }
 
+.tabelacontainer{
+    margin: auto;
+    margin-top: 20px;
+    width: 98%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabela{
+    margin: auto;
+    width: 100%;
+    align-items: center;
+    border-collapse: collapse;
+    justify-content: center;
+}
+
+.tabela td{
+    font-size: 15px;
+    border-style: solid;
+}
+
+.tabela th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+.tabela th {
+    background-color: black;
+    font-size: 19px;
+    color: white;
+}
+
+.tabela tr{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.titletabelaclientes {
+    margin: auto;
+    font-weight: bold;
+    margin-top: 40px;
+    text-align: center;
+}
+
 .textmenunav2{
     cursor: pointer;
     text-decoration: none;
@@ -709,7 +756,7 @@
     text-decoration: none;
     align-items: center;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 50px;

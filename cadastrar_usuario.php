@@ -115,7 +115,7 @@ if($_POST){
 
         $clienteInserido = $clienteDAO->inserir($cliente);
 
-        header("location:login.php");
+        header("location:listar_usuarios.php");
     }
 }
 

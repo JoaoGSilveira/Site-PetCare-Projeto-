@@ -118,7 +118,9 @@
                     <span class='textmenunav2'>Painel de ADM</span>
                     <div class='custom-dropdown-content'>
                         <a href='cadastrar_usuario.php'>Cadastrar Usuário</a>
+                        <a href='listar_usuarios.php'>Listar Usuários</a>
                         <a href='cadastrar_produtos.php'>Cadastrar Produtos</a>
+                        <a href='listar_produtos.php'>Listar Produtos</a>
                     </div>
                 </li>
                 <a href='sobrenos.php'><li class='textmenunav2'>Sobre Nós</li></a>

@@ -117,7 +117,7 @@ if($_POST){
                 <form action="#" method="POST">
                     <div>
                         <label class="logintext">Login</label>
-                        <input type="email" id="login" name="login" class="login" value="<?php echo isset($_POST['login'])?$_POST['login']:''?>" placeholder="Digite seu E-mail ou CPF">
+                        <input type="email" id="login" name="login" class="login" value="<?php echo isset($_POST['login'])?$_POST['login']:''?>" placeholder="Digite seu E-mail">
                         <div style="color:red; text-align: left;"><?php echo $msgerro[0] != ""?$msgerro[0]:'';?></div>
                       </div>
                       <div>

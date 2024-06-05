@@ -120,7 +120,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 10px;
 }
 
 .containeradmin{
@@ -606,13 +606,45 @@
     justify-content: right;
 }
 
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.custom-dropdown-content a {
+    font-size: 20px;
+    color: #333;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.custom-dropdown-content a:hover {
+    transition: 0.8s;
+    background-color: #f2f2f2;
+}
+
+.custom-dropdown:hover .custom-dropdown-content {
+    display: block;
+}
+
 .user-actions {
     color: black;
     text-align: left;
     justify-content: left;
     gap: 10px;
-    text-overflow: ellipsis; /* Adiciona "..." ao final do texto que foi cortado */
-    max-width: 150px; /* Largura máxima para o contêiner do nome */
+    text-overflow: ellipsis;
+    max-width: 150px;
 }
 
 .user-actions a:hover{
@@ -648,22 +680,22 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff; /* Cor de fundo */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    border-radius: 5px; /* Bordas arredondadas */
+    border-radius: 5px;
 }
 
 .dropdown-content a {
-    color: #333; /* Cor dos links */
-    padding: 10px 15px; /* Espaçamento interno */
+    color: #333;
+    padding: 10px 15px;
     display: block;
     text-decoration: none;
-    transition: background-color 0.3s; /* Transição suave */
+    transition: background-color 0.3s;
 }
 
 .dropdown-content a:hover {
-    background-color: #f2f2f2; /* Cor de fundo ao passar o mouse */
+    background-color: #f2f2f2;
 }
 
 .dropdown:hover .dropdown-content {
@@ -671,16 +703,22 @@
 }
 
 .textmenunav2{
+    cursor: pointer;
     text-decoration: none;
     font-style: none;
     text-decoration: none;
     align-items: center;
     text-align: center;
-    padding-left: 100px;
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .textmenunav2:hover{
     color: #333;
+    background-color: white;
     transition: 0.2s;
 }
 
@@ -695,6 +733,12 @@
 .containerlinha1 .framelinha1 {
     display: inline-block;
     margin: 0 10px;
+}
+
+.avisopontuacao{
+    padding-left: 5px;
+    opacity: 70%;
+    font-size: 15px;
 }
 
 .conteinerpudutos{
@@ -779,9 +823,11 @@
     display: flex;
     align-items: center;
     text-align: center;
-    justify-content: space-between;
     list-style-type: none;
-    padding: 0;
+}
+
+.menunav2 a {
+    display: inline-block;
 }
 
 .footer{

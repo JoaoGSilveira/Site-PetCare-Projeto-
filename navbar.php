@@ -63,6 +63,7 @@
                 <div class='dropdown'>
                     <span>Olá, </span><span class='strongazul'>{$_SESSION['nome']}</span>!
                     <div class='dropdown-content'>
+                        <a href='profile.php'>Meu Pefil</a>
                         <a href='PHP/logout.php'>Sair</a>
                     </div>
                 </div>
@@ -106,6 +107,7 @@
                 <div class='dropdown'>
                     <span>Olá, </span><span class='strongazul'>{$_SESSION['nome']}</span>!
                     <div class='dropdown-content'>
+                        <a href='profile.php'>Meu Pefil</a>
                         <a href='PHP/logout.php'>Sair</a>
                     </div>
                 </div>
@@ -118,9 +120,13 @@
                     <span class='textmenunav2'>Painel de ADM</span>
                     <div class='custom-dropdown-content'>
                         <a href='cadastrar_usuario.php'>Cadastrar Usuário</a>
-                        <a href='listar_usuarios.php'>Listar Usuários</a>
                         <a href='cadastrar_produtos.php'>Cadastrar Produtos</a>
+                        <a href='cadastrar_categoria.php'>Cadastrar Categoria</a>
+                        <a href='cadastrar_marca.php'>Cadastrar Marca</a>
+                        <a href='listar_usuarios.php'>Listar Usuários</a>
                         <a href='listar_produtos.php'>Listar Produtos</a>
+                        <a href='listar_categoria.php'>Listar Categoria</a>
+                        <a href='listar_marca.php'>Listar Marca</a>
                     </div>
                 </li>
                 <a href='sobrenos.php'><li class='textmenunav2'>Sobre Nós</li></a>

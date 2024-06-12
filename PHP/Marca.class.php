@@ -3,7 +3,7 @@
 class Marca
 {
                                                    
-    public function __construct(private int $id_marca = "", private string $nome = ""){}
+    public function __construct(private int $id_marca = 0, private string $nome = ""){}
   
     //métodos gets 
     

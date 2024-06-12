@@ -1,12 +1,13 @@
 <?php
     require_once "PHP/Conexao.class.php";
-    require_once "PHP/ClienteDAO.php";
     require_once "navbar.php";
+    require_once "PHP/Categoria_Produto.class.php";
+    require_once "PHP/CategoriaDAO.php";
     require_once "verificar_permissao.php";
 
-    $clienteDAO = new ClienteDAO();
+    $categoriaDAO = new CategoriaDAO();
 
-    $cliente = $clienteDAO->buscar_todos();
+    $categoria = $categoriaDAO->buscar_todos();
 
 ?>
 <!DOCTYPE html>
@@ -15,10 +16,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>PetCare | Listar Usuários</title>
+    <title>PetCare | Listar Categorias</title>
 </head>
 <body>
-    <h1 class="titletabelaclientes">Tabela de Usuários</h1>
+    <h1 class="titletabelaclientes">Tabela de Categorias</h1>
     <?php
 
         echo "
@@ -26,24 +27,16 @@
             <table class='tabela'>
                 <tr class='titletabela'>
                     <th>ID</th>
-                    <th>Tipo de Usuário</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>CPF</th>
+                    <th>Categoria</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </tr>";
 
-            foreach ($cliente as $clientes){
+            foreach ($categoria as $categorias){
                 echo "
                 <tr>
-                    <td>$clientes->id_cliente</td>
-                    <td>$clientes->tipo</td>
-                    <td>$clientes->nome</td>
-                    <td>$clientes->email</td>
-                    <td>$clientes->telefone</td>
-                    <td>$clientes->cpf</td>
+                    <td>$categorias->id_categoria</td>
+                    <td>$categorias->nome_categoria</td>
                     <td></td>
                     <td></td>
                 </tr>";

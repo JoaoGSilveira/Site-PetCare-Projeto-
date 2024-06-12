@@ -1,8 +1,8 @@
 <?php
-    
     require_once "PHP/Conexao.class.php";
     require_once "PHP/ClienteDAO.php";
     require_once "navbar.php";
+    require_once "verificar_permissao.php";
 
     $clienteDAO = new ClienteDAO();
 

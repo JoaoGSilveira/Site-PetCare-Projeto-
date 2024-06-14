@@ -21,6 +21,16 @@ class CategoriaDAO extends Conexao{
         $this->db = null;
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function buscar_categorias_ativas($categoria)
+	{
+		$sql = "SELECT * FROM categoria_produto WHERE status_categoria = ?";
+		$stm = $this->dba->prepare($sql);
+		$stm->bindValue(1, $categoria->getStatus());
+		$stm->execute();
+		$this->db = null;
+		return $stm->fetchAll(PDO::FETCH_OBJ);
+	}
 }
 
 ?>

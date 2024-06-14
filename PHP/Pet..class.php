@@ -3,13 +3,16 @@
 	class Pet
 	{
 
-		public function __construct(private int $idpet = 0,
-		private string $data_nasc = "",
-		private string $nome = "",
-		private string $raca = "",
-		private $agencia= null) {}
+		public function __construct(
+			private int $idpet = 0,
+			private string $data_nasc = "",
+			private string $nome = "",
+			private string $raca = "",
+			private $agencia= null
+		){}
 
-         /* sets */
+        /*Getter's*/
+		
 		public function getIdPet()
 		{
 			return $this->idpet;
@@ -35,7 +38,8 @@
 		}
 
 
-          /* sets */
+        /*Setter's*/
+
 		public function setRaca($raca)
 		{
 			$this->raca = $raca;
@@ -53,15 +57,10 @@
 			$this->nome = $nome;
 		}
 		
-		public function setRaca($raca)
-		{
-			$this->raca = $raca;
-		}
-		
 		public function setAgencia($agencia)
 		{
 			$this->agencia = $agencia;
 		}
-	
+
 	}
 ?>

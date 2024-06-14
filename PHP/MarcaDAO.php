@@ -21,6 +21,16 @@ class MarcaDAO extends Conexao{
         $this->db = null;
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function buscar_marcas_ativas($marca)
+	{
+		$sql = "SELECT * FROM marca WHERE status_marca = ?";
+		$stm = $this->dba->prepare($sql);
+		$stm->bindValue(1, $marca->getStatus());
+		$stm->execute();
+		$this->db = null;
+		return $stm->fetchAll(PDO::FETCH_OBJ);
+	}
 }
 
 ?>

@@ -4,9 +4,11 @@
 class Itens
 {
                                                    
-    public function __construct(private int $id_itens = "",
-    private float $preco_unitario= 0.00,
-    private int $quantidade = 0){}
+    public function __construct(
+        private int $id_itens = 0,
+        private float $preco_unitario= 0.00,
+        private int $quantidade = 0
+    ){}
   
     //métodos gets 
     

@@ -1,10 +1,12 @@
 <?php
 	abstract class Pessoa
 	{
-		public function __construct(protected string $nome = "", 
-        protected string $cpf = "",
-        protected string $telefone = "",
-        protected string $logradouro = ""){}
+		public function __construct(
+			protected string $nome = "", 
+			protected string $cpf = "",
+			protected string $telefone = "",
+			protected string $logradouro = ""
+		){}
         
 		/* get */ 
 
@@ -26,6 +28,7 @@
 		{
 			return $this->logradouro;
 		}
+		
 
         /* set */
 

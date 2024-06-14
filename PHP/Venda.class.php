@@ -3,9 +3,11 @@
 class Venda
 {
                          
-    public function __construct(private string $id_venda = "",
-    private string $data = "",
-    private array $itens = array()){}
+    public function __construct(
+        private string $id_venda = "",
+        private string $data = "",
+        private array $itens = array()
+    ){}
   
     //métodos gets 
     

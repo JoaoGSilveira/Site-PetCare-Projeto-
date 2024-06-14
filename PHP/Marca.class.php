@@ -6,7 +6,8 @@ class Marca
     public function __construct(
         private int $id_marca = 0, 
         private string $nome = "",
-        private string $status = ""){}
+        private string $status = ""
+    ){}
   
     //métodos gets 
     
@@ -20,6 +21,12 @@ class Marca
         return $this->nome;
     }
 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+
     /* métodos sets*/
 
     public function setIdMarca($id_marca)
@@ -31,26 +38,12 @@ class Marca
     {
         $this->nome = $nome;
     }
-  
+    
+    public function setStatus($status)
+    {
+        $this->status = $status;
 
-        /**
-         * Get the value of status
-         */ 
-        public function getStatus()
-        {
-                return $this->status;
-        }
-
-        /**
-         * Set the value of status
-         *
-         * @return  self
-         */ 
-        public function setStatus($status)
-        {
-                $this->status = $status;
-
-                return $this;
-        }
+        return $this;
+    }
 }
 ?>

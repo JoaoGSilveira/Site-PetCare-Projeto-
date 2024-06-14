@@ -2,13 +2,17 @@
     require_once "PHP/Conexao.class.php";
     require_once "navbar.php";
     require_once "PHP/Pessoa.class.php";
+    require_once "PHP/Categoria_Produto.class.php";
+    require_once "PHP/CategoriaDAO.php";
+    require_once "PHP/Marca.class.php";
+    require_once "PHP/MarcaDAO.php";
     require_once "PHP/cliente.class.php";
     require_once "PHP/ClienteDAO.php";
     require_once "verificar_permissao.php";
 
     $erro = false;
 
-    $msg = array("","","","","","","");
+    $msg = array("","","","","","","","");
 
     if($_POST){
 
@@ -22,34 +26,60 @@
             $erro = true;
         }
 
-        if(empty($_POST['precoproduto'])){
+        if(empty($_POST['tipoanimal'])){
             $msg[2] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['precoproduto'])){
-            $msg[2] = "* Campo obrigatório!";
-            $erro = true;
-        }
-
-        if(empty($_POST['cpf'])){
+        if(empty($_POST['marca'])){
             $msg[3] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['tipoanimal'])){
-            $erro = true;
+        if(empty($_POST['categoriaproduto'])){
             $msg[4] = "* Campo obrigatório!";
-        }
-
-        if(empty($_POST['senha'])){
-            $msg[5] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['confirmarsenha'])){
+        if(empty($_POST['precoproduto'])){
+            $erro = true;
+            $msg[5] = "* Campo obrigatório!";
+        }
+
+        if(empty($_POST['estoque'])){
             $msg[6] = "* Campo obrigatório!";
             $erro = true;
+        }
+
+        if(empty($_POST['imgproduto'])){
+            $msg[7] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(!$erro){
+
+            $marca = new Marca($_POST['marca']);
+
+            $catproduto = new Categoria_Produto($_POST['categoria']);
+
+            $produto = new Produto(
+                0,
+                $_POST['nomeproduto'],
+                $_POST['descriproduto'],
+                $_POST['precoproduto'],
+                $_POST['estoque'],
+                $_FILES["imagem"]["name"],
+                $_POST['tipoanimal'],
+                "Ativo",
+                $marca,
+                $catproduto
+            );
+
+            $produtoDAO = new ProdutoDAO();
+
+            $inserirproduto = $produtoDAO->inserir($produto);
+
+            /*header("location:cadastrar_produtos.php");*/
         }
     }
 ?>
@@ -88,52 +118,87 @@
                     </div>
 
                     <div>
-                        <label class="subtitlecadastro" for="cpf">Produto para:*</label>
+                        <label class="subtitlecadastro" for="tipoanimal">Produto para:*</label>
                         <select id="tipoanimal" name="tipoanimal" class="inputcadastro">
                             <option value="">Selecione o tipo de animal.</option>
                             <option value="Cachorro" <?php echo (isset($_POST['tipoanimal']) && $_POST['tipoanimal'] == 'Cachorro') ? 'selected' : ''; ?>>Cachorro</option>
                             <option value="Gato" <?php echo (isset($_POST['tipoanimal']) && $_POST['tipoanimal'] == 'Gato') ? 'selected' : ''; ?>>Gato</option>
                             <option value="Ambos" <?php echo (isset($_POST['tipoanimal']) && $_POST['tipoanimal'] == 'Ambos') ? 'selected' : ''; ?>>Ambos</option>
                         </select>
-                        <div style="color:red; text-align: left;"><?php echo $msg[4] != ""?$msg[4]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[2] != ""?$msg[2]:'';?></div>
                     </div>
 
                     <div>
-                        <label class="subtitlecadastro" for="cpf">Marca*</label>
+                        <label class="subtitlecadastro" for="marca">Marca*</label>
                         <select id="marca" name="marca" class="inputcadastro">
-                            <option value="">Selecione a marca do produto.</option>
-                            <option value="ADM" <?php echo (isset($_POST['tipoanimal']) && $_POST['tipoanimal'] == 'ADM') ? 'selected' : ''; ?>>Administrador</option>
-                            <option value="Cliente" <?php echo (isset($_POST['tipoanimal']) && $_POST['tipoanimal'] == 'Cliente') ? 'selected' : ''; ?>>Cliente</option>
+                        <option value="">Escolha uma marca</option>
+                        <?php
+                
+                            $marca = new Marca(status:"Ativo");
+                                
+                            $marcaDAO = new MarcaDAO();
+                                
+                            $retmarca = $marcaDAO->buscar_marcas_ativas($marca);
+
+                            foreach($retmarca as $marcas)
+                            {
+                                if(isset($_POST["marca"]) && $_POST["marca"] == $marca->id_marca){
+                                    echo "<option value='{$marcas->id_marca}' selected>{$marcas->nome}</option>";
+                                }
+                                else{
+                                    echo "<option value='{$marcas->id_marca}'>{$marcas->nome}</option>";
+                                }
+                            } 
+                        ?>
                         </select>
-                        <div style="color:red; text-align: left;"><?php echo $msg[4] != ""?$msg[4]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[3] != ""?$msg[3]:'';?></div>
                     </div>
 
                     <div>
-                        <label class="subtitlecadastro" for="cpf">Categoria*</label>
-                        <select id="tipoanimal" name="tipoanimal" class="inputcadastro">
-                            <option value="">Selecione a categoria do produto.</option>
-                            <option value="ADM" <?php echo (isset($_POST['tipoanimal']) && $_POST['tipoanimal'] == 'ADM') ? 'selected' : ''; ?>>Administrador</option>
-                            <option value="Cliente" <?php echo (isset($_POST['tipoanimal']) && $_POST['tipoanimal'] == 'Cliente') ? 'selected' : ''; ?>>Cliente</option>
+                        <label class="subtitlecadastro" for="categoria">Categoria*</label>
+                        <select id="categoria" name="categoria" class="inputcadastro">
+
+                            <option value="">Escolha uma categoria</option>
+                            
+                            <?php
+                
+                                $categoria = new Categoria_Produto(status:"Ativo");
+                                    
+                                $categoriaDAO = new CategoriaDAO();
+                                    
+                                $retcategoria = $categoriaDAO->buscar_categorias_ativas($categoria);
+                
+                                foreach($retcategoria as $categorias)
+                                {
+                                    if(isset($_POST["categoriaproduto"]) && $_POST["categoriaproduto"] == $categorias->id_categoria){
+                                        echo "<option value='{$categorias->id_categoria}' selected>{$categorias->nome_categoria}</option>";
+                                    }
+                                    else{
+                                        echo "<option value='{$categorias->id_categoria}'>{$categorias->nome_categoria}</option>";
+                                    }
+                                } 
+                            ?>
                         </select>
-                        <div style="color:red; text-align: left;"><?php echo $msg[4] != ""?$msg[4]:'';?></div>
+
+                        <div style="color:red; text-align: left;"><?php echo $msg[4] != "" ? $msg[4] : '';?></div>
                     </div>
 
                     <div>
                         <label class="subtitlecadastro" for="precoproduto">Preço*</label>
                         <input type="number" id="precoproduto" name="precoproduto" onblur="aplicarFormatacao()" maxlength="11" class="inputcadastro" placeholder="Digite o preço do produto" value="<?php echo isset($_POST['precoproduto'])?$_POST['precoproduto']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[2] != ""?$msg[2]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[5] != ""?$msg[5]:'';?></div>
                     </div>
 
                     <div>
-                        <label class="subtitlecadastro" for="senha">Estoque*</label>
-                        <input type="number" id="senha" name="senha" class="inputcadastro" placeholder="Digite a quantidade em estoque" value="<?php echo isset($_POST['senha'])?$_POST['senha']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[5] != ""?$msg[5]:'';?></div>
+                        <label class="subtitlecadastro" for="estoque">Estoque*</label>
+                        <input type="number" id="estoque" name="estoque" class="inputcadastro" placeholder="Digite a quantidade em estoque" value="<?php echo isset($_POST['estoque'])?$_POST['estoque']:''?>">
+                        <div style="color:red; text-align: left;"><?php echo $msg[6] != ""?$msg[6]:'';?></div>
                     </div>
                     
                     <div>
                         <label class="subtitlecadastro" for="imgproduto">Imagem do Produto*</label>
-                        <input type="file" id="imgproduto" name="imgproduto" class="inputcadastro" placeholder="Digite sua senha aqui novamente" value="<?php echo isset($_POST['imgproduto'])?$_POST['imgproduto']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[6] != ""?$msg[6]:'';?></div>
+                        <input type="file" id="imgproduto" name="imgproduto" class="inputcadastro" value="<?php echo isset($_POST['imgproduto'])?$_POST['imgproduto']:''?>">
+                        <div style="color:red; text-align: left;"><?php echo $msg[7] != ""?$msg[7]:'';?></div>
                     </div>
 
                     <button class="botaocadastro" type="submit" value="Cadastrar">Cadastrar</button>

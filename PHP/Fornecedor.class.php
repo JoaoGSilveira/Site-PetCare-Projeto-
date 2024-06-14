@@ -3,11 +3,15 @@
 class Fornecedor extends Pessoa
 {
                             
-    public function __construct(private string $cnpj = "", 
-    private string $razao_social ="" ,
-    private array $produto= array(),
-
-    $nome = "", $cpf = "", $telefone = "", $endereco = "")
+    public function __construct(
+        private string $cnpj = "", 
+        private string $razao_social ="" ,
+        private array $produto= array(),
+        $nome = "", 
+        $cpf = "", 
+        $telefone = "", 
+        $endereco = ""
+    )
     {
         parent:: __construct($nome, $cpf, $telefone, $endereco);
     }
@@ -17,6 +21,7 @@ class Fornecedor extends Pessoa
     {
         return $this->razão_social;
     }
+
     public function getProduto()
     {
         return $this->produto;

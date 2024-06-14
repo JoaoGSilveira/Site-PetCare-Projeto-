@@ -3,9 +3,11 @@
 class Servico
 {
                             
-    public function __construct(private int $id_servico = 0,
-    private string $descricao = "",
-    private float $preco = 0.00){}
+    public function __construct(
+        private int $id_servico = 0,
+        private string $descricao = "",
+        private float $preco = 0.00
+    ){}
   
     //métodos gets 
     

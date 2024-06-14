@@ -3,27 +3,30 @@
 class Cliente extends Pessoa
 {            
 
-    public function __construct(private int $idcliente = 0 , 
-    private string $email = "", 
-    private string $senha = "",
-    private string $bairro = "",
-    private string $cep = "",
-    private string $cidade = "",
-    private string $uf = "",
-    private string $numero = "",
-    private string $tipo = "", // administrador ou usuario
-    private string $status = "",
-    private array $pet = array(),
-    private array $venda = array(),
-    $nome = "", 
-    $cpf = "", 
-    $telefone = "", 
-    $logradouro = "")
+    public function __construct(
+        private int $idcliente = 0 , 
+        private string $email = "", 
+        private string $senha = "",
+        private string $bairro = "",
+        private string $cep = "",
+        private string $cidade = "",
+        private string $uf = "",
+        private string $numero = "",
+        private string $tipo = "", // administrador ou usuario
+        private string $status = "",
+        private array $pet = array(),
+        private array $venda = array(),
+        $nome = "", 
+        $cpf = "", 
+        $telefone = "", 
+        $logradouro = ""
+    )
     {
         parent:: __construct($nome, $cpf, $telefone, $logradouro);
     }
   
     //métodos gets 
+
     public function getIdCliente()
     {
         return $this->idcliente;
@@ -49,6 +52,17 @@ class Cliente extends Pessoa
     {
         return $this->venda;
     }
+
+    public function getCep()
+    {
+        return $this->cep;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
 
     /* métodos sets*/
 
@@ -134,19 +148,6 @@ class Cliente extends Pessoa
         return $this;
     }
 
-    /**
-     * Get the value of cep
-     */ 
-    public function getCep()
-    {
-        return $this->cep;
-    }
-
-    /**
-     * Set the value of cep
-     *
-     * @return  self
-     */ 
     public function setCep($cep)
     {
         $this->cep = $cep;
@@ -154,19 +155,6 @@ class Cliente extends Pessoa
         return $this;
     }
 
-    /**
-     * Get the value of status
-     */ 
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set the value of status
-     *
-     * @return  self
-     */ 
     public function setStatus($status)
     {
         $this->status = $status;

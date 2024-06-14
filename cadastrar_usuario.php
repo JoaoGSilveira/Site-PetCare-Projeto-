@@ -103,6 +103,7 @@
                 $_POST['estado'],
                 $_POST['numero'],
                 $_POST['tipo'],
+                "Ativo",
                 array(),
                 array(),
                 $_POST['nomecompleto'],

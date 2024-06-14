@@ -37,8 +37,26 @@
                 <tr>
                     <td>$marcas->id_marca</td>
                     <td>$marcas->nome</td>
-                    <td></td>
-                    <td></td>
+                    <td>$marcas->status_marca</td>
+                    <td>
+						<a href='editar.php?id={$marcas->id_marca}' class='botaoalterar'>Alterar</a>
+								
+						&nbsp;&nbsp;
+								
+						<a href='excluir.php?id={$marcas->id_marca}' class='botaoexcluir'>Excluir</a>
+								
+						&nbsp;&nbsp;";
+
+						if($marcas->status_marca == "Ativo")
+						{
+							echo "<a href='alterar_status.php?id={$marcas->id_marca}&status=Inativo'class='botaoinativar'>Inativar</a>";
+						}
+						else
+						{
+							echo "<a href='alterar_status.php?id={$marcas->id_marca}&status=Ativo' class='botaoativar'>Ativar</a>";
+						}
+                        
+			    echo "</td>
                 </tr>";
             }
 

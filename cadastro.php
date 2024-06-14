@@ -1,116 +1,117 @@
 <?php
-require_once "navbar.php";
-require_once "PHP/Conexao.class.php";
-require_once "PHP/Pessoa.class.php";
-require_once "PHP/cliente.class.php";
-require_once "PHP/ClienteDAO.php";
+    require_once "navbar.php";
+    require_once "PHP/Conexao.class.php";
+    require_once "PHP/Pessoa.class.php";
+    require_once "PHP/cliente.class.php";
+    require_once "PHP/ClienteDAO.php";
 
-$erro = false;
+    $erro = false;
 
-$msg = array("","","","","","","","","","","","","");
+    $msg = array("","","","","","","","","","","","","");
 
-if($_POST){
-    if(empty($_POST['nomecompleto'])){
-        $msg[0] = "* Campo obrigatório!";
-        $erro = true;
+    if($_POST){
+        if(empty($_POST['nomecompleto'])){
+            $msg[0] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['email'])){
+            $msg[1] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['celular'])){
+            $msg[2] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(strlen($_POST['celular']) < 11 && $_POST['celular'] > 1){
+            $msg[2] = "Esse número de celular não é valido!";
+            $erro = true;
+        }
+
+        if(empty($_POST['cpf'])){
+            $msg[3] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(strlen($_POST['cpf']) < 11 && $_POST['cpf'] > 1){
+            $msg[3] = "Esse CPF não é valido!";
+            $erro = true;
+        }
+
+        if(empty($_POST['senha'])){
+            $msg[4] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(strcmp($_POST['senha'], $_POST['confirmarsenha']) != 0){
+            $msg[5] = "As senhas não correspondem!";
+            $erro = true;
+        }
+
+        if(empty($_POST['confirmarsenha'])){
+            $msg[5] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['cep'])){
+            $msg[6] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['cidade'])){
+            $msg[7] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['estado'])){
+            $msg[8] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['logradouro'])){
+            $msg[9] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['numero'])){
+            $msg[10] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(empty($_POST['bairro'])){
+            $msg[11] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
+        if(!$erro){
+            $cliente = new Cliente(
+                0,
+                $_POST['email'],
+                md5($_POST['senha']),
+                $_POST['bairro'],
+                $_POST['cep'],
+                $_POST['cidade'],
+                $_POST['estado'],
+                $_POST['numero'],
+                "Cliente",
+                "Ativo",
+                array(),
+                array(),
+                $_POST['nomecompleto'],
+                $_POST['cpf'],
+                $_POST['celular'],
+                $_POST['logradouro']
+            );
+
+            $clienteDAO = new ClienteDAO();
+
+            $clienteInserido = $clienteDAO->inserir($cliente);
+
+            header("location:login.php");
+        }
     }
-
-    if(empty($_POST['email'])){
-        $msg[1] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(empty($_POST['celular'])){
-        $msg[2] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(strlen($_POST['celular']) < 11 && $_POST['celular'] > 1){
-        $msg[2] = "Esse número de celular não é valido!";
-        $erro = true;
-    }
-
-    if(empty($_POST['cpf'])){
-        $msg[3] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(strlen($_POST['cpf']) < 11 && $_POST['cpf'] > 1){
-        $msg[3] = "Esse CPF não é valido!";
-        $erro = true;
-    }
-
-    if(empty($_POST['senha'])){
-        $msg[4] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(strcmp($_POST['senha'], $_POST['confirmarsenha']) != 0){
-        $msg[5] = "As senhas não correspondem!";
-        $erro = true;
-    }
-
-    if(empty($_POST['confirmarsenha'])){
-        $msg[5] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(empty($_POST['cep'])){
-        $msg[6] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(empty($_POST['cidade'])){
-        $msg[7] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(empty($_POST['estado'])){
-        $msg[8] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(empty($_POST['logradouro'])){
-        $msg[9] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(empty($_POST['numero'])){
-        $msg[10] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(empty($_POST['bairro'])){
-        $msg[11] = "* Campo obrigatório!";
-        $erro = true;
-    }
-
-    if(!$erro){
-        $cliente = new Cliente(
-            0,
-            $_POST['email'],
-            md5($_POST['senha']),
-            $_POST['bairro'],
-            $_POST['cep'],
-            $_POST['cidade'],
-            $_POST['estado'],
-            $_POST['numero'],
-            "Cliente",
-            array(),
-            array(),
-            $_POST['nomecompleto'],
-            $_POST['cpf'],
-            $_POST['celular'],
-            $_POST['logradouro']
-        );
-
-        $clienteDAO = new ClienteDAO();
-
-        $clienteInserido = $clienteDAO->inserir($cliente);
-
-        header("location:login.php");
-    }
-}
 
 ?>
 

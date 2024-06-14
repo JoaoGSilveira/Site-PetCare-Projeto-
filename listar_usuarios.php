@@ -44,8 +44,26 @@
                     <td>$clientes->email</td>
                     <td>$clientes->telefone</td>
                     <td>$clientes->cpf</td>
-                    <td></td>
-                    <td></td>
+                    <td>$clientes->status_cliente</td>
+                    <td>
+						<a href='editar.php?id={$clientes->id_cliente}' class='botaoalterar'>Alterar</a>
+								
+						&nbsp;&nbsp;
+								
+						<a href='excluir.php?id={$clientes->id_cliente}' class='botaoexcluir'>Excluir</a>
+								
+						&nbsp;&nbsp;";
+
+						if($clientes->status_cliente == "Ativo")
+						{
+							echo "<a href='alterar_status.php?id={$clientes->id_cliente}&status=Inativo'class='botaoinativar'>Inativar</a>";
+						}
+						else
+						{
+							echo "<a href='alterar_status.php?id={$clientes->id_cliente}&status=Ativo' class='botaoativar'>Ativar</a>";
+						}
+                        
+			    echo "</td>
                 </tr>";
             }
 

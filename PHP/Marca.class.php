@@ -3,7 +3,10 @@
 class Marca
 {
                                                    
-    public function __construct(private int $id_marca = 0, private string $nome = ""){}
+    public function __construct(
+        private int $id_marca = 0, 
+        private string $nome = "",
+        private string $status = ""){}
   
     //métodos gets 
     
@@ -29,5 +32,25 @@ class Marca
         $this->nome = $nome;
     }
   
+
+        /**
+         * Get the value of status
+         */ 
+        public function getStatus()
+        {
+                return $this->status;
+        }
+
+        /**
+         * Set the value of status
+         *
+         * @return  self
+         */ 
+        public function setStatus($status)
+        {
+                $this->status = $status;
+
+                return $this;
+        }
 }
 ?>

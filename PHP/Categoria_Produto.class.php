@@ -4,8 +4,11 @@
 class Categoria_Produto
 {
                                                    
-    public function __construct(private int $idcategoria = 0, 
-    private string $descritivo = ""){}
+    public function __construct(
+        private int $idcategoria = 0, 
+        private string $descritivo = "",
+        private string $status = ""
+    ){}
   
     //métodos gets 
     
@@ -30,5 +33,25 @@ class Categoria_Produto
         $this->descritivo = $descritivo;
     }
   
+
+        /**
+         * Get the value of status
+         */ 
+        public function getStatus()
+        {
+                return $this->status;
+        }
+
+        /**
+         * Set the value of status
+         *
+         * @return  self
+         */ 
+        public function setStatus($status)
+        {
+                $this->status = $status;
+
+                return $this;
+        }
 }
 ?>

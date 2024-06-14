@@ -6,7 +6,7 @@ class ClienteDAO extends Conexao{
     }
 
     public function inserir($cliente){
-        $sql = "INSERT INTO usuario (tipo, nome, email, senha, telefone, cpf, logradouro, bairro, cep, cidade, uf, numero) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO usuario (tipo, nome, email, senha, telefone, cpf, logradouro, bairro, cep, cidade, uf, numero, status_cliente) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stm = $this->dba->prepare($sql);
         $stm->bindValue(1, $cliente->getTipo());
         $stm->bindValue(2, $cliente->getNome());
@@ -20,6 +20,7 @@ class ClienteDAO extends Conexao{
         $stm->bindValue(10, $cliente->getCidade());
         $stm->bindValue(11, $cliente->getUf());
         $stm->bindValue(12, $cliente->getNumero());
+        $stm->bindValue(13, $cliente->getStatus());
         $stm->execute();
         $this->dba = null;
     }

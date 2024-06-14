@@ -1,6 +1,7 @@
 <?php
     require_once "navbar.php";
 ?>
+
 <!DOCTYPE php>
 <php lang="pt_BR">
 <head>

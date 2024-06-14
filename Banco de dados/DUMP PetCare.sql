@@ -1,4 +1,4 @@
-DROP DATABASE petcare;
+DROP DATABASE IF EXISTS petcare;
 
 CREATE DATABASE petcare;
 
@@ -9,31 +9,36 @@ CREATE TABLE usuario (
     tipo ENUM("ADM","Cliente"),
     nome VARCHAR(50),
     email VARCHAR(150),
-    senha VARCHAR(50),
+    senha VARCHAR(200),
     telefone VARCHAR(50),
     cpf VARCHAR(50),
     logradouro VARCHAR(50),
     bairro VARCHAR(50),
+    cep VARCHAR(20),
     cidade VARCHAR(50),
     uf VARCHAR(50),
-    numero VARCHAR(50)
+    numero VARCHAR(50),
+    status_cliente ENUM("Ativo", "Inativo")
 );
 
 CREATE TABLE fornecedor (
     nome VARCHAR(150),
     razao_social VARCHAR(100),
     telefone VARCHAR(50),
-    cpf_fornecedor VARCHAR(50) PRIMARY KEY
+    cpf_fornecedor VARCHAR(50) PRIMARY KEY,
+    status_fornecedor ENUM("Ativo", "Inativo")
 );
 
 CREATE TABLE marca (
     id_marca INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100)
+    nome VARCHAR(100),
+    status_marca ENUM("Ativo", "Inativo")
 );
 
 CREATE TABLE categoria_produto (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
-    nome_categoria VARCHAR(50)
+    nome_categoria VARCHAR(50),
+    status_categoria ENUM("Ativo", "Inativo")
 );
 
 CREATE TABLE servico (
@@ -45,21 +50,16 @@ CREATE TABLE servico (
 CREATE TABLE produto (
     id_produto INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150),
+    imagem VARCHAR(200),
     estoque INT,
     preco FLOAT,
-    animal ENUM("Gato", "Cachorro"),
+    animal ENUM("Ambos", "Gato", "Cachorro"),
     descritivo VARCHAR(200),
     id_marca INT,
     id_categoria INT,
+    status_produto ENUM("Ativo", "Inativo"),
     FOREIGN KEY(id_marca) REFERENCES marca (id_marca),
     FOREIGN KEY(id_categoria) REFERENCES categoria_produto (id_categoria)
-);
-
-CREATE TABLE imagens (
-    descritivo VARCHAR(150),
-    id_imagem INT AUTO_INCREMENT PRIMARY KEY,
-    id_produto INT,
-    FOREIGN KEY(id_produto) REFERENCES produto (id_produto)
 );
 
 CREATE TABLE pet (
@@ -68,6 +68,7 @@ CREATE TABLE pet (
     nome VARCHAR(100),
     raca VARCHAR(100),
     id_cliente INT,
+    status_pet ENUM("Ativo", "Inativo"),
     FOREIGN KEY(id_cliente) REFERENCES usuario (id_cliente)
 );
 
@@ -109,29 +110,4 @@ CREATE TABLE itens (
     id_produto INT,
     FOREIGN KEY (id_venda) REFERENCES venda (id_venda),
     FOREIGN KEY (id_produto) REFERENCES produto (id_produto)
-);
-
-INSERT INTO usuario (
-tipo, 
-nome, 
-email, 
-senha, 
-telefone, 
-cpf, 
-logradouro, 
-bairro, 
-cidade, 
-uf, 
-numero) VALUES (
-'ADM',
-'João Guilherme Silveira',
-'joaosilveira31@hotmail.com',
-'123',
-'14996177820',
-'29558599960',
-'Rua Doutor Ignácio de Almeida Prado',
-'Jardim Odete',
-'Jaú',
-'SP',
-'506'
 );

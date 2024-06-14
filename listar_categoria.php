@@ -37,7 +37,7 @@
                 <tr>
                     <td>$categorias->id_categoria</td>
                     <td>$categorias->nome_categoria</td>
-                    <td></td>
+                    <td>$categorias->status_categoria</td>
                     <td></td>
                 </tr>";
             }

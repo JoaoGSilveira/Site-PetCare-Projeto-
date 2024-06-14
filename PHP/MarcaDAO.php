@@ -6,9 +6,10 @@ class MarcaDAO extends Conexao{
     }
 
     public function inserir($marca){
-        $sql = "INSERT INTO marca (nome) VALUES(?)";
+        $sql = "INSERT INTO marca (nome, status_marca) VALUES(?,?)";
         $stm = $this->dba->prepare($sql);
         $stm->bindValue(1, $marca->getNome());
+        $stm->bindValue(2, $marca->getStatus());
         $stm->execute();
         $this->dba = null;
     }

@@ -6,9 +6,10 @@ class CategoriaDAO extends Conexao{
     }
 
     public function inserir($categoria){
-        $sql = "INSERT INTO categoria_produto (nome_categoria) VALUES(?)";
+        $sql = "INSERT INTO categoria_produto (nome_categoria, status_categoria) VALUES(?,?)";
         $stm = $this->dba->prepare($sql);
         $stm->bindValue(1, $categoria->getDescritivo());
+        $stm->bindValue(2, $categoria->getStatus());
         $stm->execute();
         $this->dba = null;
     }

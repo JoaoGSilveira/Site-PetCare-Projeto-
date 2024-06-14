@@ -12,6 +12,7 @@ class Cliente extends Pessoa
     private string $uf = "",
     private string $numero = "",
     private string $tipo = "", // administrador ou usuario
+    private string $status = "",
     private array $pet = array(),
     private array $venda = array(),
     $nome = "", 
@@ -149,6 +150,26 @@ class Cliente extends Pessoa
     public function setCep($cep)
     {
         $this->cep = $cep;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of status
+     */ 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */ 
+    public function setStatus($status)
+    {
+        $this->status = $status;
 
         return $this;
     }

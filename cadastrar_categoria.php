@@ -19,7 +19,8 @@
             
             $categoria = new Categoria_Produto(
                 0,
-                $_POST['nomecat']
+                $_POST['nomecat'],
+                "Ativo"
             );
 
             $categoriaDAO = new CategoriaDAO();

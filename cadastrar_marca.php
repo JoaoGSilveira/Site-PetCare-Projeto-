@@ -19,7 +19,8 @@
             
             $marca = new Marca(
                 0,
-                $_POST['nomemarca']
+                $_POST['nomemarca'],
+                "Ativo"
             );
 
             $marcaDAO = new MarcaDAO();

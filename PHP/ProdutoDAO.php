@@ -6,7 +6,7 @@ class ProdutoDAO extends Conexao{
     }
 
     public function inserir($produto){
-        $sql = "INSERT INTO produto (nome_produto, imagem, estoque, preco, animal, descritivo, id_marca, id_categoria, status_produto) VALUES(?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO produto (nome, imagem, estoque, preco, animal, descritivo, id_marca, id_categoria, status_produto) VALUES(?,?,?,?,?,?,?,?,?)";
         $stm = $this->dba->prepare($sql);
         $stm->bindValue(1, $produto->getNome());
         $stm->bindValue(2, $produto->getImagem());

@@ -1,28 +1,27 @@
 <?php
-    require_once "navbar.php";
     require_once "PHP/Conexao.class.php";
-    require_once "PHP/Pet.class.php";
-    require_once "PHP/PetDAO.php";
+    require_once "navbar.php";
     require_once "PHP/Pessoa.class.php";
     require_once "PHP/cliente.class.php";
     require_once "PHP/ClienteDAO.php";
+    require_once "verificar_permissao.php";
 
     $erro = false;
 
     $msg = array("","","","","","","","","","","","","");
 
     if($_POST){
-        if(empty($_POST['nomecompleto'])){
+        if(empty($_POST['nome'])){
             $msg[0] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['email'])){
+        if(empty($_POST['razaosocial'])){
             $msg[1] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['celular'])){
+        if(empty($_POST['telefone'])){
             $msg[2] = "* Campo obrigatório!";
             $erro = true;
         }
@@ -42,52 +41,58 @@
             $erro = true;
         }
 
-        if(empty($_POST['senha'])){
+        if(empty($_POST['tipo'])){
+            $erro = true;
             $msg[4] = "* Campo obrigatório!";
-            $erro = true;
         }
 
-        if(strcmp($_POST['senha'], $_POST['confirmarsenha']) != 0){
-            $msg[5] = "As senhas não correspondem!";
-            $erro = true;
-        }
-
-        if(empty($_POST['confirmarsenha'])){
+        if(empty($_POST['senha'])){
             $msg[5] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['cep'])){
+        if(strcmp($_POST['senha'], $_POST['confirmarsenha']) != 0){
+            $msg[6] = "As senhas não correspondem!";
+            $erro = true;
+        }
+
+        if(empty($_POST['confirmarsenha'])){
             $msg[6] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['cidade'])){
+        if(empty($_POST['cep'])){
             $msg[7] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['estado'])){
+        if(empty($_POST['cidade'])){
             $msg[8] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['logradouro'])){
+        if(empty($_POST['estado'])){
             $msg[9] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['numero'])){
+        if(empty($_POST['logradouro'])){
             $msg[10] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(empty($_POST['bairro'])){
+        if(empty($_POST['numero'])){
             $msg[11] = "* Campo obrigatório!";
             $erro = true;
         }
 
+        if(empty($_POST['bairro'])){
+            $msg[12] = "* Campo obrigatório!";
+            $erro = true;
+        }
+
         if(!$erro){
+            
             $cliente = new Cliente(
                 0,
                 $_POST['email'],
@@ -97,7 +102,7 @@
                 $_POST['cidade'],
                 $_POST['estado'],
                 $_POST['numero'],
-                "Cliente",
+                $_POST['tipo'],
                 "Ativo",
                 array(),
                 array(),
@@ -108,30 +113,14 @@
             );
 
             $clienteDAO = new ClienteDAO();
-            $id_usuario = $clienteDAO->inserir($cliente);
 
-            var_dump($id_usuario);
+            $clienteInserido = $clienteDAO->inserir($cliente);
 
-            if($_POST['temPet'] == "Sim"){
-                $pet = new Pet(
-                    0,
-                    $_POST['idade_pet'],
-                    $_POST['nome_pet'],
-                    $_POST['raca_pet'],
-                    $id_usuario,
-                    "Ativo"
-                );
-    
-                $petDAO = new PetDAO();
-                $inserirPet =  $petDAO->inserir($pet);
-            }
-
-            //header("location:login.php");
+            header("location:listar_usuarios.php");
         }
     }
 
 ?>
-
 
 <!DOCTYPE php>
 <php lang="pt_BR">
@@ -139,11 +128,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PetCare | Cadastrar Usuário</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>PetCare | Cadastrar-se</title>
-
     <script>
 
         //Formatação de Celular & CPF com JavaScript
@@ -178,15 +166,6 @@
             }
         }
 
-        function togglePetFields(show) {
-            var petFields = document.getElementById("petFields");
-            if (show) {
-                petFields.style.display = "block";
-            } else {
-                petFields.style.display = "none";
-            }
-        }
-
         //------------------------------------------------------------------------------------------------------------//
 
         //Formatação de CEP com AJAX
@@ -198,7 +177,7 @@
 
         //------------------------------------------------------------------------------------------------------------//
 
-    </script>
+</script>
 
 
 </head>
@@ -211,9 +190,9 @@
         </div>
         <div class="containercadastro">
             <div>
-                <h1 class="titlecadastro">Criar sua conta</h1>
+                <h1 class="titlecadastro">Cadastrar Usuário</h1>
                 <form action="#" method="POST">
-                    <h4>Dados Pessoais</h4>
+
                     <div>
                         <label class="subtitlecadastro" for="nomecompleto">Nome Completo*</label>
                         <input type="text" id="nomecompleto" name="nomecompleto" class="inputcadastro" placeholder="Digite seu nome" value="<?php echo isset($_POST['nomecompleto'])?$_POST['nomecompleto']:''?>">
@@ -239,59 +218,37 @@
                     </div>
 
                     <div>
+                        <label class="subtitlecadastro" for="cpf">Tipo de Usuário (ADM ou Cliente)*</label>
+                        <select id="tipo" name="tipo" class="inputcadastro">
+                            <option value="">Selecione o tipo de usuário</option>
+                            <option value="ADM" <?php echo (isset($_POST['tipo']) && $_POST['tipo'] == 'ADM') ? 'selected' : ''; ?>>Administrador</option>
+                            <option value="Cliente" <?php echo (isset($_POST['tipo']) && $_POST['tipo'] == 'Cliente') ? 'selected' : ''; ?>>Cliente</option>
+                        </select>
+                        <div style="color:red; text-align: left;"><?php echo $msg[4] != ""?$msg[4]:'';?></div>
+                    </div>
+
+                    <div>
                         <label class="subtitlecadastro" for="senha">Senha*</label>
                         <input type="password" id="senha" name="senha" class="inputcadastro" placeholder="Digite sua senha aqui" value="<?php echo isset($_POST['senha'])?$_POST['senha']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[4] != ""?$msg[4]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[5] != ""?$msg[5]:'';?></div>
                     </div>
                     
                     <div>
                         <label class="subtitlecadastro" for="confirmarsenha">Confirmar Senha*</label>
                         <input type="password" id="confirmarsenha" name="confirmarsenha" class="inputcadastro" placeholder="Digite sua senha aqui novamente" value="<?php echo isset($_POST['confirmarsenha'])?$_POST['confirmarsenha']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[5] != ""?$msg[5]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[6] != ""?$msg[6]:'';?></div>
                     </div>
-
-                    <label class="subtitlecadastro" for="temPet">Você possui pet?</label>
-                    <div class="optionpet">
-                        <input class="inputpet" type="radio" id="temPetSim" name="temPet" value="Sim" onclick="togglePetFields(true)"> Sim
-                        <input class="inputpet" type="radio" id="temPetNao" name="temPet" value="Não" onclick="togglePetFields(false)"> Não
-                    </div>
-
-                    <div id="petFields" style="display:none;">
-                        <label class="subtitlecadastro" for="tipopet">Tipo de PET*</label>
-                        <select class="inputcadastro" id="tipopet" name="tipopet">
-                            <option value="">Selecione o tipo de pet</option>
-                            <option value="filhote">Cachorro</option>
-                            <option value="adulto">Gato</option>
-                        </select>
-
-                        <label class="subtitlecadastro" for="idade_pet">Idade do Pet*</label>
-                        <select class="inputcadastro" id="idade_pet" name="idade_pet">
-                            <option value="">Selecione a idade do seu pet</option>
-                            <option value="filhote">Filhote</option>
-                            <option value="adulto">Adulto</option>
-                            <option value="idoso">Idoso</option>
-                        </select>
-
-                        <label class="subtitlecadastro" for="nome_pet">Nome do Pet*</label>
-                        <input class="inputcadastro" type="text" id="nome_pet" name="nome_pet" placeholder="Digite o nome do pet">
-
-                        <label class="subtitlecadastro" for="raca_pet">Raça do Pet*</label>
-                        <input class="inputcadastro" type="text" id="raca_pet" name="raca_pet" placeholder="Digite a raça do pet">
-                    </div>
-
-                    <br>
-                    <h4>Dados de Endereço</h4>
 
                     <div>
                         <label class="subtitlecadastro" for="cep">CEP*</label>
                         <input type="text" id="cep" name="cep" class="inputcadastro" placeholder="Digite seu CEP" value= "<?php echo isset($_POST['cep'])?$_POST['cep']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[6] != ""?$msg[6]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[7] != ""?$msg[7]:'';?></div>
                     </div>
                     
                     <div>
                         <label class="subtitlecadastro" for="cidade">Cidade*</label>
                         <input type="text" id="cidade" name="cidade" class="inputcadastro" placeholder="Digite sua cidade" value= "<?php echo isset($_POST['cidade'])?$_POST['cidade']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[7] != ""?$msg[7]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[8] != ""?$msg[8]:'';?></div>
                     </div>
 
                     <div>
@@ -326,26 +283,26 @@
                             <option value="SE" <?php echo (isset($_POST['estado']) && $_POST['estado'] == 'SE') ? 'selected' : ''; ?>>Sergipe (SE)</option>
                             <option value="TO" <?php echo (isset($_POST['estado']) && $_POST['estado'] == 'TO') ? 'selected' : ''; ?>>Tocantins (TO)</option>
                         </select>
-                        <div style="color:red; text-align: left;"><?php echo $msg[8] != ""?$msg[8]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[9] != ""?$msg[9]:'';?></div>
                     </div>
 
 
                     <div>
                         <label class="subtitlecadastro" for="logradouro">Logradouro*</label>
                         <input type="text" id="logradouro" name="logradouro" class="inputcadastro" placeholder="Digite sua logradouro" value= "<?php echo isset($_POST['logradouro'])?$_POST['logradouro']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[9] != ""?$msg[9]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[10] != ""?$msg[10]:'';?></div>
                     </div>
 
                     <div>
                         <label class="subtitlecadastro" for="numero">Número*</label>
                         <input type="number" id="numero" name="numero" class="inputcadastro" placeholder="Digite o número da sua casa" value= "<?php echo isset($_POST['numero'])?$_POST['numero']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[10] != ""?$msg[10]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[11] != ""?$msg[11]:'';?></div>
                     </div>
 
                     <div>
                         <label class="subtitlecadastro" for="bairro">Bairro*</label>
                         <input type="text" id="bairro" name="bairro" class="inputcadastro" placeholder="Digite seu bairro" value= "<?php echo isset($_POST['bairro'])?$_POST['bairro']:''?>">
-                        <div style="color:red; text-align: left;"><?php echo $msg[11] != ""?$msg[11]:'';?></div>
+                        <div style="color:red; text-align: left;"><?php echo $msg[12] != ""?$msg[12]:'';?></div>
                     </div>
 
                     <button class="botaocadastro" type="submit" value="Cadastrar">Cadastrar</button>

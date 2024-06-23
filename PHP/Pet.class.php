@@ -8,7 +8,8 @@
 			private string $data_nasc = "",
 			private string $nome = "",
 			private string $raca = "",
-			private $agencia= null
+			private int $petidcli = 0,
+			private string $petstatus = ""
 		){}
 
         /*Getter's*/
@@ -31,11 +32,6 @@
 		{
 			return $this->raca;
 		}
-			
-		public function getAgencia()
-		{
-			return $this->agencia;
-		}
 
 
         /*Setter's*/
@@ -56,11 +52,46 @@
 		{
 			$this->nome = $nome;
 		}
-		
-		public function setAgencia($agencia)
-		{
-			$this->agencia = $agencia;
-		}
 
+
+			/**
+			 * Get the value of petidcli
+			 */ 
+			public function getPetidcli()
+			{
+						return $this->petidcli;
+			}
+
+			/**
+			 * Set the value of petidcli
+			 *
+			 * @return  self
+			 */ 
+			public function setPetidcli($petidcli)
+			{
+						$this->petidcli = $petidcli;
+
+						return $this;
+			}
+
+			/**
+			 * Get the value of petstatus
+			 */ 
+			public function getPetstatus()
+			{
+						return $this->petstatus;
+			}
+
+			/**
+			 * Set the value of petstatus
+			 *
+			 * @return  self
+			 */ 
+			public function setPetstatus($petstatus)
+			{
+						$this->petstatus = $petstatus;
+
+						return $this;
+			}
 	}
 ?>

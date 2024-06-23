@@ -4,6 +4,7 @@ class Fornecedor extends Pessoa
 {
                             
     public function __construct(
+        private int $id_fornecedor = 0,
         private string $cnpj = "", 
         private string $razao_social ="" ,
         private array $produto= array(),
@@ -39,5 +40,25 @@ class Fornecedor extends Pessoa
         $this->produto[] = $produto;
     }
 
+
+        /**
+         * Get the value of id_fornecedor
+         */ 
+        public function getId_fornecedor()
+        {
+                return $this->id_fornecedor;
+        }
+
+        /**
+         * Set the value of id_fornecedor
+         *
+         * @return  self
+         */ 
+        public function setId_fornecedor($id_fornecedor)
+        {
+                $this->id_fornecedor = $id_fornecedor;
+
+                return $this;
+        }
 }
 ?>

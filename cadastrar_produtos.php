@@ -1,6 +1,8 @@
 <?php
     require_once "PHP/Conexao.class.php";
     require_once "navbar.php";
+    require_once "PHP/ProdutoDAO.php";
+    require_once "PHP/Produto.class.php";
     require_once "PHP/Pessoa.class.php";
     require_once "PHP/Categoria_Produto.class.php";
     require_once "PHP/CategoriaDAO.php";
@@ -36,7 +38,7 @@
             $erro = true;
         }
 
-        if(empty($_POST['categoriaproduto'])){
+        if(empty($_POST['categoria'])){
             $msg[4] = "* Campo obrigatório!";
             $erro = true;
         }
@@ -51,15 +53,13 @@
             $erro = true;
         }
 
-        if(empty($_POST['imgproduto'])){
+        if(empty($_POST['imagem'])){
             $msg[7] = "* Campo obrigatório!";
             $erro = true;
         }
 
-        if(!$erro){
-
+        if (!$erro) {
             $marca = new Marca($_POST['marca']);
-
             $catproduto = new Categoria_Produto($_POST['categoria']);
 
             $produto = new Produto(
@@ -68,7 +68,7 @@
                 $_POST['descriproduto'],
                 $_POST['precoproduto'],
                 $_POST['estoque'],
-                $_FILES["imagem"]["name"],
+                $_POST["imagem"],
                 $_POST['tipoanimal'],
                 "Ativo",
                 $marca,
@@ -76,10 +76,9 @@
             );
 
             $produtoDAO = new ProdutoDAO();
-
             $inserirproduto = $produtoDAO->inserir($produto);
 
-            /*header("location:cadastrar_produtos.php");*/
+            header("location:listar_produtos.php");
         }
     }
 ?>
@@ -142,7 +141,7 @@
 
                             foreach($retmarca as $marcas)
                             {
-                                if(isset($_POST["marca"]) && $_POST["marca"] == $marca->id_marca){
+                                if(isset($_POST["marca"]) && $_POST["marca"] == $marcas->id_marca){
                                     echo "<option value='{$marcas->id_marca}' selected>{$marcas->nome}</option>";
                                 }
                                 else{
@@ -161,16 +160,12 @@
                             <option value="">Escolha uma categoria</option>
                             
                             <?php
-                
                                 $categoria = new Categoria_Produto(status:"Ativo");
-                                    
                                 $categoriaDAO = new CategoriaDAO();
-                                    
                                 $retcategoria = $categoriaDAO->buscar_categorias_ativas($categoria);
-                
-                                foreach($retcategoria as $categorias)
-                                {
-                                    if(isset($_POST["categoriaproduto"]) && $_POST["categoriaproduto"] == $categorias->id_categoria){
+
+                                foreach($retcategoria as $categorias) {
+                                    if(isset($_POST["categoria"]) && $_POST["categoria"] == $categorias->id_categoria){
                                         echo "<option value='{$categorias->id_categoria}' selected>{$categorias->nome_categoria}</option>";
                                     }
                                     else{
@@ -179,13 +174,12 @@
                                 } 
                             ?>
                         </select>
-
                         <div style="color:red; text-align: left;"><?php echo $msg[4] != "" ? $msg[4] : '';?></div>
                     </div>
 
                     <div>
                         <label class="subtitlecadastro" for="precoproduto">Preço*</label>
-                        <input type="number" id="precoproduto" name="precoproduto" onblur="aplicarFormatacao()" maxlength="11" class="inputcadastro" placeholder="Digite o preço do produto" value="<?php echo isset($_POST['precoproduto'])?$_POST['precoproduto']:''?>">
+                        <input type="number" step="0.01" id="precoproduto" name="precoproduto" onblur="aplicarFormatacao()" maxlength="11" class="inputcadastro" placeholder="Digite o preço do produto" value="<?php echo isset($_POST['precoproduto'])?$_POST['precoproduto']:''?>">
                         <div style="color:red; text-align: left;"><?php echo $msg[5] != ""?$msg[5]:'';?></div>
                     </div>
 
@@ -196,8 +190,8 @@
                     </div>
                     
                     <div>
-                        <label class="subtitlecadastro" for="imgproduto">Imagem do Produto*</label>
-                        <input type="file" id="imgproduto" name="imgproduto" class="inputcadastro" value="<?php echo isset($_POST['imgproduto'])?$_POST['imgproduto']:''?>">
+                        <label for="imagem" class="subtitlecadastro">Imagem do Produto*</label>
+                        <input type="file" class="inputcadastro" id="imagem" name="imagem" accept="image/png, image/jpeg, image/webp">
                         <div style="color:red; text-align: left;"><?php echo $msg[7] != ""?$msg[7]:'';?></div>
                     </div>
 

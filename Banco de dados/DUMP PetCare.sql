@@ -50,7 +50,7 @@ CREATE TABLE servico (
 CREATE TABLE produto (
     id_produto INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150),
-    imagem VARCHAR(200),
+    imagem VARCHAR(200) NOT NULL,
     estoque INT,
     preco FLOAT,
     animal ENUM("Ambos", "Gato", "Cachorro"),

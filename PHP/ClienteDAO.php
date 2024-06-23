@@ -22,6 +22,10 @@ class ClienteDAO extends Conexao{
         $stm->bindValue(12, $cliente->getNumero());
         $stm->bindValue(13, $cliente->getStatus());
         $stm->execute();
+
+        $idusuario = $this->dba->lastInsertId();
+        return $idusuario;
+
         $this->dba = null;
     }
 
@@ -36,7 +40,7 @@ class ClienteDAO extends Conexao{
     }
 
     public function buscar_todos(){
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT * FROM usuario ORDER BY nome";
         $stm = $this->dba->prepare($sql);
         $stm->execute();
         $this->db = null;

@@ -5,7 +5,7 @@
         public function __construct(
             private int $id_servico = 0,
             private string $descricao = "",
-            private float $preco = 0.00
+            private string $servico_status = ""
         ){}
     
         //Getter's
@@ -18,10 +18,6 @@
         public function getDescricao()
         {
             return $this->descricao;
-        }  
-        public function getPreco()
-        {
-            return $this->preco;
         }
         
 
@@ -31,13 +27,30 @@
         {
             $this->id_servico = $id_servico;
         }
+
         public function setDescricao($descricao)
         {
             $this->descricao = $descricao;
         }
-        public function setPreco($preco)
-        {
-            $this->preco = $preco;
-        }
+
+            /**
+             * Get the value of servico_status
+             */ 
+            public function getServico_status()
+            {
+                        return $this->servico_status;
+            }
+
+            /**
+             * Set the value of servico_status
+             *
+             * @return  self
+             */ 
+            public function setServico_status($servico_status)
+            {
+                        $this->servico_status = $servico_status;
+
+                        return $this;
+            }
     }
 ?>

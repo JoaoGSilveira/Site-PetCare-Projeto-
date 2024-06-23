@@ -1,24 +1,21 @@
 <?php
 
-    class Agencia
+    class Agenda
     {                         
         public function __construct(
-            private int $idagencia = 0,
-            private string $data_nasci = "", 
-            private string $horario = "",
-            private array $servico_realiazado = array()
-        ) {}
+            private int $id_agenda = 0,
+            private int $tipo_servico = 0,
+            private string $horario = "", 
+            private string $data_ag = "",
+            private int $id_pet = 0,
+            private float $valorservico = 0.00
+        ){}
     
         //Getter's
-        
-        public function getIdAgencia()
+
+        public function getId_agenda()
         {
-            return $this->idagencia;
-        }
-        
-        public function getData_Nasci()
-        {
-            return $this->data_nasci;
+            return $this->id_agenda;
         }
 
         public function getHorario()
@@ -26,32 +23,69 @@
             return $this->horario;
         }
 
-        public function getServico_realiazado()
+        public function getData_ag()
         {
-            return $this->servico_realiazado;
+            return $this->data_ag;
         }
 
-        //Setter's  
-
-        public function setIdAgencia($idagencia)
+        public function getId_pet()
         {
-            $this->idagencia = $idagencia;
+            return $this->id_pet;
         }
 
-        public function setData_Nasci($data_nasci)
+        public function getValorservico()
         {
-            $this->data_nasci = $data_nasci;
+            return $this->valorservico;
+        }
+
+        public function getTipo_servico()
+        {
+            return $this->tipo_servico;
+        }
+
+
+        //Setter's
+
+        public function setId_agenda($id_agenda)
+        {
+            $this->id_agenda = $id_agenda;
+
+            return $this;
         }
 
         public function setHorario($horario)
         {
             $this->horario = $horario;
+
+            return $this;
         }
 
-        public function setServico_realiaado($servico_realiazado)
+        public function setData_ag($data_ag)
         {
-            $this->servico_realizado[] = $servico_realiazado;
+            $this->data_ag = $data_ag;
+
+            return $this;
         }
 
+        public function setId_pet($id_pet)
+        {
+            $this->id_pet = $id_pet;
+
+            return $this;
+        }
+
+        public function setValorservico($valorservico)
+        {
+            $this->valorservico = $valorservico;
+
+            return $this;
+        }
+
+        public function setTipo_servico($tipo_servico)
+        {
+            $this->tipo_servico = $tipo_servico;
+
+            return $this;
+        }
     }
 ?>

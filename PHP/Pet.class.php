@@ -8,7 +8,8 @@
 			private string $nome = "",
 			private string $raca = "",
 			private int $petidcli = 0,
-			private string $petstatus = ""
+			private string $petstatus = "",
+			private string $tipopet = ""
 		){}
 
         //Getter's
@@ -75,5 +76,25 @@
 
 			return $this;
 		}
+
+			/**
+			 * Get the value of tipopet
+			 */ 
+			public function getTipopet()
+			{
+						return $this->tipopet;
+			}
+
+			/**
+			 * Set the value of tipopet
+			 *
+			 * @return  self
+			 */ 
+			public function setTipopet($tipopet)
+			{
+						$this->tipopet = $tipopet;
+
+						return $this;
+			}
 	}
 ?>

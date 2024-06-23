@@ -2,7 +2,6 @@
 
 	class Pet
 	{
-
 		public function __construct(
 			private int $idpet = 0,
 			private string $data_nasc = "",
@@ -12,7 +11,7 @@
 			private string $petstatus = ""
 		){}
 
-        /*Getter's*/
+        //Getter's
 		
 		public function getIdPet()
 		{
@@ -33,8 +32,18 @@
 			return $this->raca;
 		}
 
+		public function getPetidcli()
+		{
+			return $this->petidcli;
+		}
 
-        /*Setter's*/
+		public function getPetstatus()
+		{
+			return $this->petstatus;
+		}
+
+
+        //Setter's
 
 		public function setRaca($raca)
 		{
@@ -53,45 +62,18 @@
 			$this->nome = $nome;
 		}
 
+		public function setPetidcli($petidcli)
+		{
+			$this->petidcli = $petidcli;
 
-			/**
-			 * Get the value of petidcli
-			 */ 
-			public function getPetidcli()
-			{
-						return $this->petidcli;
-			}
+			return $this;
+		}
 
-			/**
-			 * Set the value of petidcli
-			 *
-			 * @return  self
-			 */ 
-			public function setPetidcli($petidcli)
-			{
-						$this->petidcli = $petidcli;
+		public function setPetstatus($petstatus)
+		{
+			$this->petstatus = $petstatus;
 
-						return $this;
-			}
-
-			/**
-			 * Get the value of petstatus
-			 */ 
-			public function getPetstatus()
-			{
-						return $this->petstatus;
-			}
-
-			/**
-			 * Set the value of petstatus
-			 *
-			 * @return  self
-			 */ 
-			public function setPetstatus($petstatus)
-			{
-						$this->petstatus = $petstatus;
-
-						return $this;
-			}
+			return $this;
+		}
 	}
 ?>

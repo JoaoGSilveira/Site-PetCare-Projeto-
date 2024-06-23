@@ -9,7 +9,7 @@
             private array $servico_realiazado = array()
         ) {}
     
-        //métodos gets 
+        //Getter's
         
         public function getIdAgencia()
         {
@@ -31,7 +31,7 @@
             return $this->servico_realiazado;
         }
 
-        /* métodos sets*/
+        //Setter's  
 
         public function setIdAgencia($idagencia)
         {

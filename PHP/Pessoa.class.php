@@ -1,4 +1,5 @@
 <?php
+
 	abstract class Pessoa
 	{
 		public function __construct(
@@ -8,7 +9,7 @@
 			protected string $logradouro = ""
 		){}
         
-		/* get */ 
+		//Getter's
 
 		public function getNome()
 		{
@@ -30,7 +31,7 @@
 		}
 		
 
-        /* set */
+        //Setter's
 
 		public function setNome($nome)
 		{

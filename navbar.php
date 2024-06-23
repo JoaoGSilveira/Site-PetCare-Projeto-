@@ -123,10 +123,14 @@
                         <a href='cadastrar_produtos.php'>Cadastrar Produtos</a>
                         <a href='cadastrar_categoria.php'>Cadastrar Categoria</a>
                         <a href='cadastrar_marca.php'>Cadastrar Marca</a>
+                        <a href='cadastro_servico.php'>Cadastrar Serviço</a>
+                        <a href='agendar.php'>Cadastrar Agendamento</a>
                         <a href='listar_usuarios.php'>Listar Usuários</a>
                         <a href='listar_produtos.php'>Listar Produtos</a>
                         <a href='listar_categoria.php'>Listar Categoria</a>
                         <a href='listar_marca.php'>Listar Marca</a>
+                        <a href='listar_servico.php'>Listar Serviço</a>
+                        <a href='listar_agendamentos.php'>Listar Agendamentos</a>
                     </div>
                 </li>
                 <a href='sobrenos.php'><li class='textmenunav2'>Sobre Nós</li></a>

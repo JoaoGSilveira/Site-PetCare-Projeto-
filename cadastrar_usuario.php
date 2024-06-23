@@ -92,7 +92,6 @@
         }
 
         if(!$erro){
-            
             $cliente = new Cliente(
                 0,
                 $_POST['email'],
@@ -113,10 +112,26 @@
             );
 
             $clienteDAO = new ClienteDAO();
+            $id_usuario = $clienteDAO->inserir($cliente);
 
-            $clienteInserido = $clienteDAO->inserir($cliente);
+            var_dump($id_usuario);
 
-            header("location:listar_usuarios.php");
+            if($_POST['temPet'] == "Sim"){
+                $pet = new Pet(
+                    0,
+                    $_POST['idade_pet'],
+                    $_POST['nome_pet'],
+                    $_POST['raca_pet'],
+                    $id_usuario,
+                    "Ativo",
+                    $_POST['tipopet']
+                );
+    
+                $petDAO = new PetDAO();
+                $inserirPet =  $petDAO->inserir($pet);
+            }
+
+            header("location:login.php");
         }
     }
 
@@ -145,9 +160,9 @@
         </div>
         <div class="containercadastro">
             <div>
-                <h1 class="titlecadastro">Cadastrar Usuário</h1>
+                <h1 class="titlecadastro">Criar sua conta</h1>
                 <form action="#" method="POST">
-
+                    <h4>Dados Pessoais</h4>
                     <div>
                         <label class="subtitlecadastro" for="nomecompleto">Nome Completo*</label>
                         <input type="text" id="nomecompleto" name="nomecompleto" class="inputcadastro" placeholder="Digite seu nome" value="<?php echo isset($_POST['nomecompleto'])?$_POST['nomecompleto']:''?>">
@@ -193,6 +208,38 @@
                         <input type="password" id="confirmarsenha" name="confirmarsenha" class="inputcadastro" placeholder="Digite sua senha aqui novamente" value="<?php echo isset($_POST['confirmarsenha'])?$_POST['confirmarsenha']:''?>">
                         <div style="color:red; text-align: left;"><?php echo $msg[6] != ""?$msg[6]:'';?></div>
                     </div>
+
+                    <label class="subtitlecadastro" for="temPet">Você possui pet?</label>
+                    <div class="optionpet">
+                        <input class="inputpet" type="radio" id="temPetSim" name="temPet" value="Sim" onclick="togglePetFields(true)"> Sim
+                        <input class="inputpet" type="radio" id="temPetNao" name="temPet" value="Não" onclick="togglePetFields(false)"> Não
+                    </div>
+
+                    <div id="petFields" style="display:none;">
+                        <label class="subtitlecadastro" for="tipopet">Tipo de PET*</label>
+                        <select class="inputcadastro" id="tipopet" name="tipopet">
+                            <option value="">Selecione o tipo de pet</option>
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                        </select>
+
+                        <label class="subtitlecadastro" for="idade_pet">Idade do Pet*</label>
+                        <select class="inputcadastro" id="idade_pet" name="idade_pet">
+                            <option value="">Selecione a idade do seu pet</option>
+                            <option value="Filhote">Filhote</option>
+                            <option value="Adulto">Adulto</option>
+                            <option value="Idoso">Idoso</option>
+                        </select>
+
+                        <label class="subtitlecadastro" for="nome_pet">Nome do Pet*</label>
+                        <input class="inputcadastro" type="text" id="nome_pet" name="nome_pet" placeholder="Digite o nome do pet">
+
+                        <label class="subtitlecadastro" for="raca_pet">Raça do Pet*</label>
+                        <input class="inputcadastro" type="text" id="raca_pet" name="raca_pet" placeholder="Digite a raça do pet">
+                    </div>
+
+                    <br>
+                    <h4>Dados de Endereço</h4>
 
                     <div>
                         <label class="subtitlecadastro" for="cep">CEP*</label>

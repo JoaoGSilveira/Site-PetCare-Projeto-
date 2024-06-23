@@ -110,8 +110,9 @@
                     </div>
 
                     <div>
-                        <label class="subtitlecadastro" for="horario">Horario*</label>
+                        <label class="subtitlecadastro" for="horario">Horário*</label>
                         <select id="horario" name="horario" class="inputcadastro">
+                            <option value = "">Selecione um horário</option>
                             <?php
 
                                 $start = new DateTime('08:00');

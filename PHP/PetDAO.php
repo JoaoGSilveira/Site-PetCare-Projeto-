@@ -27,6 +27,15 @@
             $this->db = null;
             return $stm->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function buscar_todos()
+        {
+            $sql = "SELECT * FROM pet";
+            $stm = $this->dba->prepare($sql);
+            $stm->execute();
+            $this->db = null;
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        }
     }
 
 ?>

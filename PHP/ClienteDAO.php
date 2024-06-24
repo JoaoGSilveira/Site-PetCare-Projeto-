@@ -21,6 +21,7 @@
             $stm->bindValue(11, $cliente->getUf());
             $stm->bindValue(12, $cliente->getNumero());
             $stm->bindValue(13, $cliente->getStatus());
+            $stm->bindValue(13, $cliente->getStatus());
             $stm->execute();
 
             $idusuario = $this->dba->lastInsertId();
@@ -46,6 +47,16 @@
             $this->db = null;
             return $stm->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function alterar_status_cliente($cliente)
+		{
+			$sql = "UPDATE usuario SET status_cliente = ? WHERE id_cliente = ?";
+			$stm = $this->dba->prepare($sql);
+			$stm->bindValue(1, $cliente->getStatus());
+			$stm->bindValue(2, $cliente->getIdCliente());
+			$stm->execute();
+			$this->db = null;
+		}
     }
 
 ?>

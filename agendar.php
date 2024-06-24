@@ -10,7 +10,7 @@
     require_once "PHP/PetDAO.php";
     require_once "PHP/Agenda.class.php";
     require_once "PHP/AgendaDAO.php";
-    //require_once "verificar_permissao.php";
+    require_once "verificar_permissao.php";
 
     $erro = false;
 

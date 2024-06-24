@@ -19,6 +19,11 @@
         {
             return $this->descricao;
         }
+
+        public function getServico_status()
+        {
+            return $this->servico_status;
+        }
         
 
         //Setter's
@@ -33,24 +38,11 @@
             $this->descricao = $descricao;
         }
 
-            /**
-             * Get the value of servico_status
-             */ 
-            public function getServico_status()
-            {
-                        return $this->servico_status;
-            }
+        public function setServico_status($servico_status)
+        {
+            $this->servico_status = $servico_status;
 
-            /**
-             * Set the value of servico_status
-             *
-             * @return  self
-             */ 
-            public function setServico_status($servico_status)
-            {
-                        $this->servico_status = $servico_status;
-
-                        return $this;
-            }
+            return $this;
+        }
     }
 ?>

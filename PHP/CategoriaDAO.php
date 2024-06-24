@@ -31,6 +31,36 @@
             $this->db = null;
             return $stm->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function alterar($categoria)
+		{
+			$sql = "UPDATE categoria_produto SET nome_categoria = ? WHERE id_categoria = ?";
+			$stm = $this->dba->prepare($sql);
+			$stm->bindValue(1, $categoria->getDescritivo());
+			$stm->bindValue(2, $categoria->getIdCategoria());
+			$stm->execute();
+			$this->db = null;
+		}
+
+        public function buscar_uma_categoria($categoria)
+		{
+			$sql = "SELECT * FROM categoria_produto WHERE id_categoria = ?";
+			$stm = $this->dba->prepare($sql);
+			$stm->bindValue(1,$categoria->getIdcategoria());
+			$stm->execute();
+			$this->db = null;
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+
+        public function alterar_status_categoria($categoria)
+		{
+			$sql = "UPDATE categoria_produto SET status_categoria = ? WHERE id_categoria = ?";
+			$stm = $this->dba->prepare($sql);
+			$stm->bindValue(1, $categoria->getStatus());
+			$stm->bindValue(2, $categoria->getIdcategoria());
+			$stm->execute();
+			$this->db = null;
+		}
     }
 
 ?>

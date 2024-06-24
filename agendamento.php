@@ -37,7 +37,7 @@
     </main>
 
     <footer class="footer">
-        <!-- Conteúdo do rodapé -->
+        
     </footer>
 
     <script src="JS/jscalendar.js"></script>

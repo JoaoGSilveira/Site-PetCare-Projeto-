@@ -1,20 +1,38 @@
 <?php
-    require_once "navbar.php";
+require_once "PHP/Conexao.class.php";
+require_once "navbar.php";
+require_once "PHP/Produto.class.php";
+require_once "PHP/ProdutoDAO.php";
+require_once "PHP/CategoriaDAO.php";
+require_once "PHP/Categoria_Produto.class.php";
+
+$produtoDAO = new ProdutoDAO();
+$categoriaDAO = new CategoriaDAO();
+
+// Buscar todos os produtos
+$produtos = $produtoDAO->buscar_todos();
+
+// Filtrar apenas os produtos para "Gato"
+$produtos_gatos = array_filter($produtos, function($produto) {
+    return $produto->animal === 'Gato';
+});
 ?>
 
-<!DOCTYPE php>
-<php lang="pt_BR">
+<!DOCTYPE html>
+<html lang="pt_BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>PetCare | Produto para Gatos</title>
+    <title>PetCare | Produtos para Gatos</title>
 </head>
+
 <body>
     <main class="fixsidemenu">
         <div class="mapasite">
             <p class="wherelocal2">Onde estou?</p>
-            <p class="wherelocal2"><a href="index.php">inicio</a> > Produtos para gatos</p>
+            <p class="wherelocal2"><a href="index.php">Início</a> > Produtos para gatos</p>
         </div>
 
         <aside class="menulateral">
@@ -41,103 +59,50 @@
         </aside>
 
         <h2 class="titlecategoria2">Produtos para gatos:</h2>
-        <div class="conteinerpudutos">
-            <span class="framelinha1">
-                <img src="foto produtos/camagato.jpg" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Cama Túnel Gato Grande com Brinquedo de jogo de tubo</p>
-                <p class="textproducts">R$ 168,00</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/brinquedosproduto.webp" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Kit 10 Mini Brinquedos Gatos Recreação Catnip Ratinhos</p>
-                <p class="textproducts">R$ 41,99</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/sachewhiskas.jpg" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Sachê Whiskas carne ao molho para Gatos Adultos Castrados</p>
-                <p class="textproducts">R$ 3,99</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/comedouro-automatico-para-gatos-com-gravador-de-voz.jpg.webp" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Alimentador Automático De Gatos 3L Com Câmera</p>
-                <p class="textproducts">R$ 170,99</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-        </div>
+        <div class="conteinerpudutos"></div>
+        <?php
+        if (!empty($produtos_gatos)) {
+            $count = 0;
+            foreach ($produtos_gatos as $produto) {
+                if ($count % 4 == 0) {
+                    if ($count > 0) {
+                        echo '</div>';
+                    }
+                    echo '<div class="containerlinha1">';
+                }
+                
+                echo "<span class='framelinha1'>";
+                echo "<img src='foto produtos/{$produto->imagem}' alt='Img Produto' height='220px' width='170px' class='produtoimg'>";
+                echo "<p class='textproducts'>{$produto->nome}</p>";
+                echo "<p class='textproducts'>R$ {$produto->preco}</p>";
+                echo "<div class='comprabuton'>Adicionar ao Carrinho<img src='icon/CarrinhoCompra.png' height='20px' class='fotocompra'></div>";
+                echo "</span>";
 
-        <div class="conteinerpudutos">
-            <span class="framelinha1">
-                <img src="foto produtos/3027903162_1.webp" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Fonte Bebedouro Para Gatos Água Corrente Azul 110v</p>
-                <p class="textproducts">R$ 134,10</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/Areia_Higiênica_Pipicat_Floral_para_Gatos_4KG_-_Giulia_Rocha.jpg" height="220px" width="200px" class="produtoimg">
-                <p class="textproducts">Areia Higiênica Pipicat floral 4KG</p>
-                <p class="textproducts">R$ 20,99</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/petisco_friskies_party_mix_gatos_adultos_cordeiro_carne_suina_e_carne_40g_2081_1_a64e6473386f5f8b1f48c0719deb6275_20230223123527.webp" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Petisco friskies party mix Gatos Adultos Cordeiro</p>
-                <p class="textproducts">R$ 6,99</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/camabox.webp" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Cama Box Pet Sleep Gatos 50x50x20</p>
-                <p class="textproducts">R$ 131,99</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-        </div>
-
-        <div class="conteinerpudutos">
-            <span class="framelinha1">
-                <img src="foto produtos/3fce70e40a.webp" height="220px" width="170px" class="produtoimg">
-                <p class="textproducts">Moletom GRAFITE E AMARELO roupa para gato</p>
-                <p class="textproducts">R$ 79,99</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/arranhador.webp" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Arranhador Gatos 3 Bases Grande com Penas e Rede</p>
-                <p class="textproducts">R$ 170</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/coleira.jpg" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Coleira de peitoral completa para gatos</p>
-                <p class="textproducts">R$ </p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
-            <span class="framelinha1">
-                <img src="foto produtos/granplusgatos.jpg" height="220px" width="220px" class="produtoimg">
-                <p class="textproducts">Ração para gatos GRAN PLUS 3KG CARNE</p>
-                <p class="textproducts">R$ 59,90</p>
-                <div class="comprabuton">Adicionar ao Carrinho<img src="icon/CarrinhoCompra.png" height="20px" class="fotocompra"></div>
-            </span>
+                $count++;
+            }
+            echo '</div>';
+        } else {
+            echo "<p>Não foram encontrados produtos para gatos.</p>";
+        }
+        ?>
         </div>
     </main>
 
     <footer class="footer">
-
+        <!-- Rodapé -->
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const searchBar = document.querySelector('.pesquisanav1');
             const produtos = document.querySelectorAll('.framelinha1');
 
-            searchBar.addEventListener('input', function() {
+            searchBar.addEventListener('input', function () {
                 const searchTerm = searchBar.value.trim().toLowerCase();
 
-                produtos.forEach(function(produto) {
+                produtos.forEach(function (produto) {
                     const nomeProduto = produto.querySelector('.textproducts').textContent.toLowerCase();
-                    
+
                     if (nomeProduto.includes(searchTerm)) {
                         produto.style.display = 'inline';
                     } else {
@@ -147,6 +112,7 @@
             });
         });
     </script>
-    
+
 </body>
-</php>
+
+</html>

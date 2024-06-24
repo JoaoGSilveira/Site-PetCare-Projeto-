@@ -38,6 +38,26 @@
             $this->db = null;
             return $stm->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function buscar_produtos_por_categoria($id_categoria)
+        {
+            $sql = "SELECT * FROM produto WHERE id_categoria = ? AND status_produto = 'Ativo'";
+            $stm = $this->dba->prepare($sql);
+            $stm->bindValue(1, $id_categoria);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        public function alterar_status_produto($produto)
+		{
+			$sql = "UPDATE produto SET status_produto = ? WHERE id_produto = ?";
+			$stm = $this->dba->prepare($sql);
+			$stm->bindValue(1, $produto->getStatus());
+			$stm->bindValue(2, $produto->getIdProduto());
+			$stm->execute();
+			$this->db = null;
+		}
+
     }
 
 ?>

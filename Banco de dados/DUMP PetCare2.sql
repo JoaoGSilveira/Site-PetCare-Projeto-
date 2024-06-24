@@ -80,8 +80,10 @@ CREATE TABLE agenda (
     data_ag DATE,
     id_pet INT,
     valor_servico FLOAT,
-    FOREIGN KEY(id_pet) REFERENCES pet (id_pet)
+    FOREIGN KEY (id_pet) REFERENCES pet (id_pet),
+    FOREIGN KEY (tipo_servico) REFERENCES servico (id_servico)
 );
+
 
 CREATE TABLE produto_fornecedor (
     id_produto INT,

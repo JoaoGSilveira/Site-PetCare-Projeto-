@@ -38,7 +38,21 @@
                     <td>$categorias->id_categoria</td>
                     <td>$categorias->nome_categoria</td>
                     <td>$categorias->status_categoria</td>
-                    <td></td>
+                    <td>
+						<a href='editar_categoria.php?id={$categorias->id_categoria}' class='botaoalterar'>Alterar</a>
+								
+						&nbsp;&nbsp;";
+
+						if($categorias->status_categoria == "Ativo")
+						{
+							echo "<a href='alterar_status_categoria.php?id={$categorias->id_categoria}&status_categoria=Inativo'class='botaoinativar'>Inativar</a>";
+						}
+						else
+						{
+							echo "<a href='alterar_status_categoria.php?id={$categorias->id_categoria}&status_categoria=Ativo' class='botaoativar'>Ativar</a>";
+						}
+                        
+			    echo "</td>
                 </tr>";
             }
 

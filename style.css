@@ -798,6 +798,7 @@
 
 .containerlinha1 .framelinha1 {
     display: inline-block;
+    flex-wrap: wrap;
     margin: 0 10px;
 }
 

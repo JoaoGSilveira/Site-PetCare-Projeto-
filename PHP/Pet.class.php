@@ -43,6 +43,11 @@
 			return $this->petstatus;
 		}
 
+		public function getTipopet()
+		{
+			return $this->tipopet;
+		}
+
 
         //Setter's
 
@@ -77,24 +82,11 @@
 			return $this;
 		}
 
-			/**
-			 * Get the value of tipopet
-			 */ 
-			public function getTipopet()
-			{
-						return $this->tipopet;
-			}
+		public function setTipopet($tipopet)
+		{
+			$this->tipopet = $tipopet;
 
-			/**
-			 * Set the value of tipopet
-			 *
-			 * @return  self
-			 */ 
-			public function setTipopet($tipopet)
-			{
-						$this->tipopet = $tipopet;
-
-						return $this;
-			}
+			return $this;
+		}
 	}
 ?>

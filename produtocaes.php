@@ -9,12 +9,10 @@ require_once "PHP/Categoria_Produto.class.php";
 $produtoDAO = new ProdutoDAO();
 $categoriaDAO = new CategoriaDAO();
 
-// Buscar todos os produtos
 $produtos = $produtoDAO->buscar_todos();
 
-// Filtrar apenas os produtos para "Cachorro"
 $produtos_cachorros = array_filter($produtos, function($produto) {
-    return $produto->animal === 'Cachorro';
+    return $produto->animal === 'Cachorro' || $produto->animal === 'Ambos';
 });
 ?>
 
@@ -93,10 +91,25 @@ $produtos_cachorros = array_filter($produtos, function($produto) {
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const precoForm = document.querySelector('.itenscat .precomenul form');
-            const marcaForm = document.querySelector('.itenscat .marcatitle form');
+            const searchBar = document.querySelector('.pesquisanav1');
+            const produtos = document.querySelectorAll('.framelinha1');
 
-            precoForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const minPreco = document.querySelector('input[name="min_preco"]').value.trim();
-                const maxPreco = document.querySelector('input[name="
+            searchBar.addEventListener('input', function () {
+                const searchTerm = searchBar.value.trim().toLowerCase();
+
+                produtos.forEach(function (produto) {
+                    const nomeProduto = produto.querySelector('.textproducts').textContent.toLowerCase();
+
+                    if (nomeProduto.includes(searchTerm)) {
+                        produto.style.display = 'inline';
+                    } else {
+                        produto.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

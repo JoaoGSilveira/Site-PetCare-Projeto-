@@ -9,12 +9,10 @@ require_once "PHP/Categoria_Produto.class.php";
 $produtoDAO = new ProdutoDAO();
 $categoriaDAO = new CategoriaDAO();
 
-// Buscar todos os produtos
 $produtos = $produtoDAO->buscar_todos();
 
-// Filtrar apenas os produtos para "Gato"
 $produtos_gatos = array_filter($produtos, function($produto) {
-    return $produto->animal === 'Gato';
+    return $produto->animal === 'Gato' || $produto->animal === 'Ambos';
 });
 ?>
 

@@ -58,6 +58,37 @@
 			$this->db = null;
 		}
 
+        public function buscarPorId($id){
+            $sql = "SELECT * FROM produto WHERE id_produto = ?";
+            $stm = $this->dba->prepare($sql);
+            $stm->bindValue(1, $id);
+            $stm->execute();
+            $resultado = $stm->fetch(PDO::FETCH_ASSOC);
+    
+            if ($resultado) {
+                $marcaDAO = new MarcaDAO();
+                $categoriaDAO = new CategoriaDAO();
+    
+                $produto = new Produto(
+                    $resultado['id_produto'],
+                    $resultado['nome'],
+                    $resultado['descritivo'],
+                    $resultado['preco'],
+                    $resultado['estoque'],
+                    $resultado['imagem'],
+                    $resultado['animal'],
+                    $resultado['status_produto'],
+                    $marcaDAO->buscarPorId($resultado['id_marca']),
+                    $categoriaDAO->buscarPorId($resultado['id_categoria'])
+                );
+    
+                return $produto;
+            } else {
+                return null;
+            }
+        }
+        
+
     }
 
 ?>

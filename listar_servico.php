@@ -42,9 +42,9 @@ $servicos = $servicoDAO->buscar_todos();
                     &nbsp;&nbsp;";
                     
                     if($servico->servico_status == "Ativo") {
-                        echo "<a href='alterar_status_servico.php?id={$servico->id_servico}&status=Inativo' class='botaoinativar'>Inativar</a>";
+                        echo "<a href='alterar_status_servico.php?id={$servico->id_servico}&servico_status=Inativo' class='botaoinativar'>Inativar</a>";
                     } else {
-                        echo "<a href='alterar_status_servico.php?id={$servico->id_servico}&status=Ativo' class='botaoativar'>Ativar</a>";
+                        echo "<a href='alterar_status_servico.php?id={$servico->id_servico}&servico_status=Ativo' class='botaoativar'>Ativar</a>";
                     }
 
             echo "</td>

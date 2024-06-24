@@ -60,6 +60,25 @@
 			$stm->execute();
 			$this->db = null;
 		}
+
+        public function buscarPorId($id) {
+            $sql = "SELECT * FROM marca WHERE id_marca = ?";
+            $stm = $this->dba->prepare($sql);
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $resultado = $stm->fetch(PDO::FETCH_ASSOC);
+    
+            if ($resultado) {
+                $marca = new Marca(
+                    $resultado['id_marca'],
+                    $resultado['nome'],
+                    $resultado['status_marca']
+                );
+                return $marca;
+            } else {
+                return null;
+            }
+        }
     }
 
 ?>

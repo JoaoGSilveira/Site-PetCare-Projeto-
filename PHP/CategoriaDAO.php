@@ -61,6 +61,25 @@
 			$stm->execute();
 			$this->db = null;
 		}
+
+        public function buscarPorId($id) {
+            $sql = "SELECT * FROM categoria_produto WHERE id_categoria = ?";
+            $stm = $this->dba->prepare($sql);
+            $stm->bindValue(1, $id, PDO::PARAM_INT);
+            $stm->execute();
+            $resultado = $stm->fetch(PDO::FETCH_ASSOC);
+    
+            if ($resultado) {
+                $categoria = new Categoria_Produto(
+                    $resultado['id_categoria'],
+                    $resultado['nome_categoria'],
+                    $resultado['status_categoria']
+                );
+                return $categoria;
+            } else {
+                return null;
+            }
+        }
     }
 
 ?>

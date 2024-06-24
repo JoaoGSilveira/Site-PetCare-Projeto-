@@ -1,6 +1,8 @@
 <?php
     require_once "PHP/Conexao.class.php";
     require_once "navbar.php";
+    require_once "PHP/Pet.class.php";
+    require_once "PHP/PetDAO.php";
     require_once "PHP/Pessoa.class.php";
     require_once "PHP/cliente.class.php";
     require_once "PHP/ClienteDAO.php";
@@ -131,7 +133,7 @@
                 $inserirPet =  $petDAO->inserir($pet);
             }
 
-            header("location:login.php");
+            header("location:listar_usuarios.php");
         }
     }
 
